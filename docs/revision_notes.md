@@ -63,3 +63,11 @@ Presentation checks cover the transcribed numerical arrays and their totals, acq
 - Removed about 530 words from the introduction, related work, discussion, and limitations, plus redundant numerical lists and technical identifiers elsewhere. Retained study-specific coastal ASCAT context and the relevant 2024 Workflow Run RO-Crate / 2025 STAC developments, without adding unsupported novelty claims.
 - Extended the scoped AI-assistance acknowledgment to identify both derived figure groups. The original scientific record and all seven displayed vector figures remain traceable to their sources and stated calculations.
 - Final pagination is ten main pages, including the acknowledgment and references, plus five supplementary pages. The build check now enforces the author's requested ten-page main-manuscript limit.
+
+## Professional figure revision
+
+- Applied the installed Scientific Visualization v1.4 skill to all six main figures and Supplementary Figure S1; the exact upstream source is recorded in `editorial_tools.md`.
+- Standardized typography, visual hierarchy, muted grids, numerical labels, and export metadata through `scripts/figure_style.py`. Redesigned the workflow, refined the map's role markers and annotation, used discrete integer colors in the opportunity matrix, and separated count and percentage typography in the diagnostic panels.
+- Added redundant distinctions: circle/triangle station roles, solid/hatched processing bars, outlined threshold-reaching cells, and labeled capacity-gap components. Color is not the sole carrier of these meanings.
+- Preserved all source data, arithmetic derivations, figure dimensions, and manuscript text. This revision changes figure presentation without adding observations or altering scientific conclusions.
+- Added seven sets of vector PDF, editable SVG, and 600 ppi PNG exports, plus a figure-only review gallery. The manuscript remains ten pages, and the supplement remains five. The gallery is a separate convenience file, not an additional manuscript section.

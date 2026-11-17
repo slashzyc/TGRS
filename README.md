@@ -14,6 +14,8 @@ This repository contains the manuscript prepared for **IEEE Transactions on Geos
 - [Complete reading copy: main text and supplement](deliverables/TGRS_Complete_Manuscript.pdf)
 - [Main manuscript in IEEE journal format](deliverables/TGRS_Manuscript.pdf)
 - [Supplementary material](deliverables/TGRS_Supplement.pdf)
+- [Seven-figure review gallery](deliverables/TGRS_Figure_Gallery.pdf)
+- [Individual PDF, editable SVG, and 600 ppi PNG figures](deliverables/figures)
 - [Revision notes](docs/revision_notes.md)
 - [Figure guide and assistance scope](docs/figure_guide.md)
 - [Submission audit, 17 November 2026](docs/submission_audit_2026-11-17.md)
@@ -29,6 +31,7 @@ Included:
 - Editable LaTeX manuscript and supplemental text.
 - IEEEtran journal class, unmodified, with its original license notice.
 - Seven displayed vector figures: six in the main text and one in the supplement, plus the earlier figure versions and original extracted images.
+- A shared figure theme, numbered publication-sized exports, and a figure-only review PDF. Current pagination remains ten main pages and five supplementary pages.
 - A station map with a bundled Natural Earth land subset, a cost plot with a descriptive marginal-yield panel, and a two-panel display of local and overall capacity shortfalls.
 - CSV transcriptions of source counts and coordinates, plus separately labeled arithmetic derivations of marginal yields and positive cell deficits.
 - Plotting, document-building, and presentation-consistency utilities.
@@ -62,6 +65,8 @@ python scripts/render_station_map.py
 python scripts/render_acquisition_profile.py
 python scripts/render_capacity_shortfall.py
 ```
+
+These commands also regenerate the numbered files in `deliverables/figures`. The PDF exports are the vector submission assets; SVG files retain editable text, and 600 ppi PNG files support previews and raster workflows. `scripts/figure_style.py` centralizes typography, colors, and export settings; `scripts/render_workflow.py` implements the workflow figure. See [figure design notes](docs/figure_style.md) for sizes and the applied Scientific Visualization skill. `render_figures.py --include-legacy` additionally rebuilds the superseded cumulative-only plot, which is not displayed in the current manuscript.
 
 The numeric checks verify internal consistency of the **reported** display values. They do not validate the original observation acquisition or reproduce its outcome-access audit.
 

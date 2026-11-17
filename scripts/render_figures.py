@@ -17,23 +17,18 @@ import matplotlib
 
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
-from matplotlib.colors import LinearSegmentedColormap, Normalize
-from matplotlib.patches import FancyArrowPatch, FancyBboxPatch, Rectangle
+from matplotlib.colors import BoundaryNorm, ListedColormap, Normalize
+from matplotlib.patches import Rectangle
 import numpy as np
+
+from figure_style import (AMBER, BLUE, CMAP, GRID, INK, LIGHT_AMBER, LIGHT_BLUE,
+                          MUTED, PALE, RED, style_context, save_figure)
+from render_workflow import make_figure as make_workflow_figure
 
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "data"
 STATES = ("extract_valid", "fewer_than_2_candidates", "no_overlap", "time_invalid")
-BLUE = "#315E7D"
-LIGHT_BLUE = "#C9D9E4"
-INK = "#202A32"
-GRID = "#DDE2E7"
-RED = "#9E493F"
-AMBER = "#996A21"
-CMAP = LinearSegmentedColormap.from_list(
-    "paper_blue", ["#F7FAFC", "#D5E3ED", "#98B6CD", "#537F9E", "#244B68"]
-)
 
 
 def read_csv(name: str) -> list[dict[str, str]]:
@@ -105,34 +100,14 @@ def check_transcription() -> dict[str, object]:
     }
 
 
-def style() -> None:
-    plt.rcParams.update({
-        "font.family": "DejaVu Sans",
-        "font.size": 8.5,
-        "axes.labelsize": 8.5,
-        "axes.titlesize": 9.5,
-        "xtick.labelsize": 8,
-        "ytick.labelsize": 8,
-        "axes.linewidth": 0.7,
-        "axes.edgecolor": INK,
-        "text.color": INK,
-        "axes.labelcolor": INK,
-        "xtick.color": INK,
-        "ytick.color": INK,
-        "pdf.fonttype": 42,
-        "ps.fonttype": 42,
-        "savefig.facecolor": "white",
-    })
-
-
 def finish(fig: plt.Figure, number: int, output_dir: Path, preview_dir: Path | None) -> None:
-    fig.savefig(output_dir / f"figure{number}.pdf", metadata={
-        "Title": f"Figure {number}: revised manuscript display",
-        "Subject": "Editorial rendering from transcribed aggregate values; see data/README.md",
-        "Creator": "Matplotlib; scripts/render_figures.py",
-    })
-    if preview_dir is not None:
-        fig.savefig(preview_dir / f"figure{number}.png", dpi=200)
+    titles = {1: "Selection, capacity stopping and replay integrity",
+              2: "Evaluation opportunity matrix", 3: "Processing states by station role",
+              4: "Legacy cumulative acquisition profile", 5: "Detailed processing diagnostics"}
+    save_figure(fig, output_dir / f"figure{number}.pdf", title=titles[number],
+                subject="Editorial rendering from reported aggregate values; see data/README.md",
+                creator="Matplotlib; scripts/render_figures.py",
+                preview_path=preview_dir / f"figure{number}.png" if preview_dir else None)
     plt.close(fig)
 
 
@@ -155,115 +130,52 @@ def annotation_color(fraction: float) -> str:
     return "white" if white_contrast > dark_contrast else INK
 
 
-def node(ax: plt.Axes, x: float, y: float, width: float, height: float,
-         text: str, kind: str = "blue", fontsize: float = 8.1) -> None:
-    palette = {
-        "blue": ("#EDF3F7", BLUE),
-        "red": ("#F8EEEC", RED),
-        "amber": ("#FBF5E9", AMBER),
-        "green": ("#EDF4F0", "#47715B"),
-        "gray": ("#F4F5F6", "#68747E"),
-    }
-    fill, edge = palette[kind]
-    ax.add_patch(FancyBboxPatch((x, y), width, height,
-        boxstyle="round,pad=0.005,rounding_size=0.008", lw=0.85,
-        edgecolor=edge, facecolor=fill, zorder=2))
-    ax.text(x + width / 2, y + height / 2, text, ha="center", va="center",
-            fontsize=fontsize, linespacing=1.16, zorder=3)
-
-
-def arrow(ax: plt.Axes, start: tuple[float, float], end: tuple[float, float],
-          color: str = "#5A6873") -> None:
-    ax.add_patch(FancyArrowPatch(start, end, arrowstyle="-|>",
-        mutation_scale=8, linewidth=0.95, color=color, shrinkA=1, shrinkB=1, zorder=1))
-
-
 def figure1() -> plt.Figure:
-    values = {r["parameter"]: int(r["value"]) for r in read_csv("figure1_flow_parameters.csv")}
-    fig = plt.figure(figsize=(7.16, 4.55))
-    ax = fig.add_axes([0.01, 0.01, 0.98, 0.98])
-    ax.set(xlim=(0, 1), ylim=(0, 1))
-    ax.axis("off")
-    ax.text(0.015, 0.976, "(a) Frozen selection and capacity assessment", fontsize=10,
-            fontweight="bold", va="top")
-    y, h = 0.730, 0.170
-    node(ax, 0.015, y, 0.185, h, f"Official listing\n{values['listing_requests']:,} requests")
-    node(ax, 0.235, y, 0.185, h,
-         f"Frozen selector\n{values['strata']} strata × {values['temporal_bins']} bins\n{values['primary_files']} primary files")
-    node(ax, 0.455, y, 0.265, h,
-         f"Predictor accounting\n{values['stations']} stations × active files\nDeduplicate; zero-fill {values['evaluation_stations']} × {values['reporting_blocks']}")
-    node(ax, 0.755, y, 0.230, h,
-         f"G0-v4.1 capacity gate\n≥{values['capacity_threshold']} total opportunities\n≥{values['cell_threshold']} per station–block", "red", 8.0)
-    for start, end in [(0.200, 0.235), (0.420, 0.455), (0.720, 0.755)]:
-        arrow(ax, (start, y + h / 2), (end, y + h / 2))
-    node(ax, 0.455, 0.535, 0.265, 0.110,
-         f"Activate next complete\n{values['files_per_round']}-file round\nUp to four rounds", "amber", 7.8)
-    ax.plot([0.800, 0.800, 0.640], [0.730, 0.685, 0.685], color=AMBER, lw=0.95, zorder=1)
-    arrow(ax, (0.640, 0.685), (0.640, 0.645), AMBER)
-    arrow(ax, (0.515, 0.645), (0.515, 0.730), AMBER)
-    ax.text(0.504, 0.687, "Failure; an alternate\nround remains", fontsize=7.2,
-            ha="right", va="center", color=AMBER)
-    node(ax, 0.755, 0.505, 0.230, 0.140,
-         f"FAIL_EXHAUSTED\n{values['final_opportunities']} / {values['capacity_threshold']} opportunities\nMinimum cell: {values['minimum_cell']} / {values['cell_threshold']}\nB1 closed", "red", 7.8)
-    arrow(ax, (0.880, 0.730), (0.880, 0.645), RED)
-    ax.text(0.895, 0.687, f"Failure after\nround {values['final_round']}", fontsize=7.0,
-            va="center", color=RED)
-
-    ax.axhline(0.465, xmin=0.015, xmax=0.985, color=GRID, lw=0.8)
-    ax.text(0.015, 0.445, "(b) Source result and replay integrity", fontsize=10,
-            fontweight="bold", va="top")
-    ax.text(0.055, 0.325, "v4.1\nsource", fontsize=8.1, ha="center", va="center")
-    ax.text(0.055, 0.155, "v5\naudit", fontsize=8.1, ha="center", va="center")
-    node(ax, 0.120, 0.275, 0.185, 0.100, "Frozen v4.1 design\nPredictors only")
-    node(ax, 0.350, 0.275, 0.195, 0.100, "G0-v4.1: FAIL\nSource capacity", "red")
-    node(ax, 0.590, 0.275, 0.165, 0.100, "B1 closed", "gray")
-    node(ax, 0.120, 0.105, 0.185, 0.100, "Post-result\nv5 identity", "amber")
-    node(ax, 0.350, 0.105, 0.195, 0.100, "Digest-bound\nreplay", "green")
-    node(ax, 0.590, 0.105, 0.165, 0.100, "G0-v5: PASS\nIntegrity only", "green", 7.8)
-    node(ax, 0.800, 0.105, 0.185, 0.270,
-         f"Outcome vault\nclosed\n\n{values['outcome_reads']} outcome reads\nB1 remained closed", "gray", 7.8)
-    for center_y in (0.325, 0.155):
-        for start, end in ((0.305, 0.350), (0.545, 0.590), (0.755, 0.800)):
-            arrow(ax, (start, center_y), (end, center_y))
-    arrow(ax, (0.2125, 0.275), (0.2125, 0.205), AMBER)
-    ax.text(0.225, 0.240, "New audit identity", fontsize=7.3, color=AMBER, va="center")
-    return fig
+    return make_workflow_figure()
 
 
 def figure2() -> plt.Figure:
     rows = read_csv("figure2_station_blocks.csv")
     values = matrix(rows, tuple(f"block_{i:02d}" for i in range(1, 6)))
     fig = plt.figure(figsize=(3.5, 3.4))
-    fig.text(0.195, 0.985, "150 opportunities; 3/40 cells ≥8", fontsize=7.7, va="top")
-    ax = fig.add_axes([0.195, 0.260, 0.755, 0.680])
-    mesh = ax.pcolormesh(np.arange(6), np.arange(9), values, cmap=CMAP,
-                        vmin=0, vmax=9, shading="flat", linewidth=0.35,
+    fig.text(0.185, 0.982, "150 opportunities · 3/40 cells ≥8", fontsize=8.2,
+             fontweight="bold", va="top")
+    ax = fig.add_axes([0.185, 0.260, 0.780, 0.675])
+    discrete = ListedColormap([CMAP(i / 9) for i in range(10)])
+    norm = BoundaryNorm(np.arange(-0.5, 10.5), discrete.N)
+    mesh = ax.pcolormesh(np.arange(6), np.arange(9), values, cmap=discrete,
+                        norm=norm, shading="flat", linewidth=0.45,
                         edgecolors="white", rasterized=False)
-    ax.set_xlim(0, 6.0)
+    ax.add_patch(Rectangle((5.12, 0), 0.78, 8, facecolor=PALE, edgecolor="none", zorder=0))
+    ax.plot([5.12, 5.12], [0, 8], color=GRID, linewidth=0.7)
+    ax.set_xlim(0, 5.95)
     ax.set_ylim(8, 0)
     ax.set_xticks(np.arange(5) + 0.5, [f"{i:02d}" for i in range(1, 6)])
     ax.set_yticks(np.arange(8) + 0.5, [r["station"] for r in rows])
-    ax.set_xlabel("28-day reporting block", labelpad=4)
-    ax.tick_params(length=0, pad=4)
+    ax.set_xlabel("28-day reporting block", labelpad=5)
+    ax.tick_params(length=0, pad=4, labelsize=8.2)
     for spine in ax.spines.values():
         spine.set_visible(False)
     for i in range(8):
         for j in range(5):
             v = int(values[i, j])
+            color = MUTED if v == 0 else annotation_color(v / 9)
             ax.text(j + 0.5, i + 0.5, str(v), ha="center", va="center", fontsize=9,
-                    color=annotation_color(v / 9),
-                    fontweight="bold" if v >= 8 else "normal")
+                    color=color, fontweight="bold" if v >= 8 else "normal")
             if v >= 8:
                 ax.add_patch(Rectangle((j + 0.035, i + 0.035), 0.93, 0.93,
-                                      fill=False, edgecolor=AMBER, linewidth=1.25))
-        ax.text(5.55, i + 0.5, rows[i]["total"], ha="center", va="center", fontsize=8)
-    ax.text(5.55, -0.34, "Total", ha="center", va="center", fontsize=8, clip_on=False)
-    cax = fig.add_axes([0.240, 0.105, 0.520, 0.027])
-    cb = fig.colorbar(mesh, cax=cax, orientation="horizontal", ticks=[0, 3, 6, 9])
+                                      fill=False, edgecolor=AMBER, linewidth=1.15))
+        ax.text(5.52, i + 0.5, rows[i]["total"], ha="center", va="center",
+                fontsize=8.5, fontweight="bold", color=INK)
+    ax.text(5.52, -0.34, "Total", ha="center", va="center", fontsize=8.2,
+            color=MUTED, clip_on=False)
+    cax = fig.add_axes([0.235, 0.108, 0.625, 0.033])
+    cb = fig.colorbar(mesh, cax=cax, orientation="horizontal", ticks=np.arange(10))
     cb.solids.set_rasterized(False)
-    cb.outline.set_linewidth(0.5)
-    cb.ax.tick_params(labelsize=7.5, length=2, pad=2)
-    cb.set_label("Opportunities per station–block", fontsize=7.7, labelpad=3)
+    cb.solids.set_edgecolor("face")
+    cb.outline.set_visible(False)
+    cb.ax.tick_params(labelsize=8, length=2, width=0.5, pad=2)
+    cb.set_label("Opportunities per station–block", fontsize=8, labelpad=4)
     return fig
 
 
@@ -271,26 +183,28 @@ def figure3() -> plt.Figure:
     rows = read_csv("figure3_terminal_counts.csv")
     values = matrix(rows)
     fig = plt.figure(figsize=(3.5, 2.95))
-    ax = fig.add_axes([0.320, 0.190, 0.640, 0.625])
+    ax = fig.add_axes([0.320, 0.195, 0.645, 0.620])
     positions = np.arange(4)
-    for i, (offset, color, hatch) in enumerate([(-0.17, BLUE, None), (0.17, LIGHT_BLUE, "////")]):
-        bars = ax.barh(positions + offset, values[i], height=0.28, color=color,
-                       edgecolor=BLUE, linewidth=0.5, hatch=hatch,
+    roles = [(-0.16, BLUE, BLUE, None), (0.16, LIGHT_AMBER, AMBER, "/")]
+    for i, (offset, color, edge, hatch) in enumerate(roles):
+        bars = ax.barh(positions + offset, values[i], height=0.265, color=color,
+                       edgecolor=edge, linewidth=0.65, hatch=hatch,
                        label=f"{rows[i]['role']} (n={int(rows[i]['total']):,})", zorder=3)
         for bar, value in zip(bars, values[i]):
-            ax.text(float(value) + 9, bar.get_y() + bar.get_height() / 2,
-                    str(int(value)), va="center", fontsize=8)
+            ax.text(float(value) + 10, bar.get_y() + bar.get_height() / 2,
+                    str(int(value)), va="center", fontsize=8.2, color=INK)
     ax.set_yticks(positions, ["Valid extraction", "<2 valid\ncandidates", "No overlap", "Time invalid"])
     ax.set_ylim(3.58, -0.58)
     ax.set_xlim(0, 710)
     ax.set_xticks([0, 200, 400, 600])
-    ax.set_xlabel("Station-file rows", labelpad=4)
-    ax.grid(axis="x", color=GRID, linewidth=0.6, zorder=0)
+    ax.set_xlabel("Station-file rows", labelpad=5)
+    ax.grid(axis="x", color=GRID, linewidth=0.45, zorder=0)
     clean_axis(ax)
-    ax.tick_params(axis="y", length=0, pad=6)
+    ax.tick_params(axis="y", length=0, pad=5, labelsize=8.2)
     handles, labels = ax.get_legend_handles_labels()
-    fig.legend(handles, labels, loc="upper center", bbox_to_anchor=(0.58, 0.993),
-               frameon=False, fontsize=8, ncol=1, labelspacing=0.4, handlelength=1.5)
+    fig.legend(handles, labels, loc="upper left", bbox_to_anchor=(0.315, 0.993),
+               frameon=False, fontsize=8.2, ncol=1, labelspacing=0.45,
+               handlelength=1.6, borderaxespad=0, handletextpad=0.6)
     return fig
 
 
@@ -335,28 +249,28 @@ def diagnostic_panel(ax: plt.Axes, rows: list[dict[str, str]], title: str) -> ob
     percent = 100 * values / denominators[:, None]
     mesh = ax.pcolormesh(np.arange(5), np.arange(len(rows) + 1), percent,
                         cmap=CMAP, norm=Normalize(0, 100), shading="flat",
-                        linewidth=0.4, edgecolors="white", rasterized=False)
+                        linewidth=0.45, edgecolors="white", rasterized=False)
     ax.set_xlim(0, 4)
     ax.set_ylim(len(rows), 0)
-    labels = []
-    for row in rows:
-        if row["panel"] == "source_block":
-            labels.append(f"{row['group'].replace('_', ' ')} (n={row['total']})")
-        else:
-            labels.append(row["group"])
+    labels = [f"{r['group'].replace('_', ' ')} (n={r['total']})"
+              if r['panel'] == 'source_block' else r['group'] for r in rows]
     ax.set_yticks(np.arange(len(rows)) + 0.5, labels)
     ax.set_xticks(np.arange(4) + 0.5,
                   ["Valid", "<2 valid\ncandidates", "No\noverlap", "Time\ninvalid"])
-    ax.tick_params(length=0, pad=4, labelsize=8)
+    ax.tick_params(length=0, pad=4, labelsize=8.3)
     for spine in ax.spines.values():
         spine.set_visible(False)
-    ax.set_title(title, loc="left", pad=10, fontsize=9.5, fontweight="bold")
+    ax.set_title(title, loc="left", pad=10, fontsize=10, fontweight="bold")
+    if rows[0]['panel'] == 'stratum':
+        ax.axhline(4, color="white", linewidth=1.1)
     for i in range(len(rows)):
         for j in range(4):
             p = float(percent[i, j])
-            ax.text(j + 0.5, i + 0.5, f"{int(values[i, j])}\n{p:.0f}%",
-                    ha="center", va="center", fontsize=8.4, linespacing=1.08,
-                    color=annotation_color(p / 100))
+            color = annotation_color(p / 100)
+            ax.text(j + 0.5, i + 0.27, str(int(values[i, j])), ha="center", va="center",
+                    fontsize=9, fontweight="bold", color=color)
+            ax.text(j + 0.5, i + 0.74, f"{p:.0f}%", ha="center", va="center",
+                    fontsize=8.0, color=color)
     return mesh
 
 
@@ -369,11 +283,12 @@ def figure5() -> plt.Figure:
     for ax, panel, title in zip(axes, ["stratum", "station", "source_block"],
                                 ["(a) Stratum", "(b) Evaluation station", "(c) Source-file sensing block"]):
         mesh = diagnostic_panel(ax, [r for r in rows if r["panel"] == panel], title)
-    cax = fig.add_axes([0.285, 0.062, 0.530, 0.017])
+    cax = fig.add_axes([0.285, 0.062, 0.530, 0.023])
     cb = fig.colorbar(mesh, cax=cax, orientation="horizontal", ticks=[0, 25, 50, 75, 100])
     cb.solids.set_rasterized(False)
-    cb.ax.tick_params(labelsize=7.5, length=2, pad=2)
-    cb.outline.set_linewidth(0.5)
+    cb.ax.tick_params(labelsize=8, length=2, width=0.5, pad=2)
+    cb.solids.set_edgecolor("face")
+    cb.outline.set_visible(False)
     cb.set_label("Within-row percentage", fontsize=8, labelpad=3)
     return fig
 
@@ -382,14 +297,19 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output-dir", type=Path, default=ROOT / "paper" / "figures")
     parser.add_argument("--preview-dir", type=Path)
+    parser.add_argument("--include-legacy", action="store_true",
+                        help="Also redraw the superseded cumulative-only figure4.pdf.")
     args = parser.parse_args()
     args.output_dir.mkdir(parents=True, exist_ok=True)
     if args.preview_dir is not None:
         args.preview_dir.mkdir(parents=True, exist_ok=True)
     summary = check_transcription()
-    style()
-    for number, make in enumerate([figure1, figure2, figure3, figure4, figure5], start=1):
-        finish(make(), number, args.output_dir, args.preview_dir)
+    makers = {1: figure1, 2: figure2, 3: figure3, 5: figure5}
+    if args.include_legacy:
+        makers[4] = figure4
+    with style_context():
+        for number, make in sorted(makers.items()):
+            finish(make(), number, args.output_dir, args.preview_dir)
     print(json.dumps(summary, indent=2))
 
 

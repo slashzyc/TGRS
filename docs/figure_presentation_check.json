@@ -1,0 +1,110 @@
+{
+  "scope": "Figure presentation and byte preservation only; no independent acquisition or replay.",
+  "date_local": "2026-11-17",
+  "baseline_commit": "fbef6fee48e9c8e2d956b3a7249459a3229e2319",
+  "native_figure_font_size_note": "Minimum sizes apply before LaTeX placement; full manuscript pages were also inspected.",
+  "unchanged_data_files": [
+    "data/README.md",
+    "data/acquisition_marginal_yield.csv",
+    "data/basemaps/natural_earth_50m_land_station_region.geojson",
+    "data/basemaps/natural_earth_provenance.json",
+    "data/capacity_cell_shortfalls.csv",
+    "data/capacity_shortfall_summary.json",
+    "data/figure1_flow_parameters.csv",
+    "data/figure2_station_blocks.csv",
+    "data/figure3_terminal_counts.csv",
+    "data/figure4_budget_capacity.csv",
+    "data/figure5_display_percentages.csv",
+    "data/figure5_terminal_counts.csv",
+    "data/station_locations.csv"
+  ],
+  "figures": [
+    {
+      "name": "figure1",
+      "size_in": [
+        7.16,
+        4.55
+      ],
+      "exact_expected_canvas": true,
+      "min_font_pt": 8.0,
+      "raster_images": 0,
+      "embedded_fonts": true,
+      "out_of_bounds": []
+    },
+    {
+      "name": "station_map",
+      "size_in": [
+        7.16,
+        4.2
+      ],
+      "exact_expected_canvas": true,
+      "min_font_pt": 8.0,
+      "raster_images": 0,
+      "embedded_fonts": true,
+      "out_of_bounds": []
+    },
+    {
+      "name": "figure2",
+      "size_in": [
+        3.5,
+        3.4
+      ],
+      "exact_expected_canvas": true,
+      "min_font_pt": 8.0,
+      "raster_images": 0,
+      "embedded_fonts": true,
+      "out_of_bounds": []
+    },
+    {
+      "name": "figure3",
+      "size_in": [
+        3.5,
+        2.95
+      ],
+      "exact_expected_canvas": true,
+      "min_font_pt": 8.0,
+      "raster_images": 0,
+      "embedded_fonts": true,
+      "out_of_bounds": []
+    },
+    {
+      "name": "acquisition_profile",
+      "size_in": [
+        7.16,
+        3.2
+      ],
+      "exact_expected_canvas": true,
+      "min_font_pt": 8.0,
+      "raster_images": 0,
+      "embedded_fonts": true,
+      "out_of_bounds": []
+    },
+    {
+      "name": "capacity_shortfall",
+      "size_in": [
+        7.16,
+        3.2
+      ],
+      "exact_expected_canvas": true,
+      "min_font_pt": 8.0,
+      "raster_images": 0,
+      "embedded_fonts": true,
+      "out_of_bounds": []
+    },
+    {
+      "name": "figure5",
+      "size_in": [
+        7.16,
+        6.0
+      ],
+      "exact_expected_canvas": true,
+      "min_font_pt": 8.0,
+      "raster_images": 0,
+      "embedded_fonts": true,
+      "out_of_bounds": []
+    }
+  ],
+  "main_pages": 10,
+  "supplement_pages": 5,
+  "gallery_pages": 7
+}

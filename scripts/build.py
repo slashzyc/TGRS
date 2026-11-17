@@ -53,8 +53,27 @@ def main() -> None:
     })
     with (dest / 'TGRS_Complete_Manuscript.pdf').open('wb') as out:
         writer.write(out)
+    gallery = PdfWriter()
+    for filename, title in [
+        ('figure1.pdf', 'Figure 1 — Selection, capacity, and replay workflow'),
+        ('station_map.pdf', 'Figure 2 — Station locations'),
+        ('figure2.pdf', 'Figure 3 — Station-block opportunity matrix'),
+        ('figure3.pdf', 'Figure 4 — Processing states'),
+        ('acquisition_profile.pdf', 'Figure 5 — Acquisition profile'),
+        ('capacity_shortfall.pdf', 'Figure 6 — Capacity shortfalls'),
+        ('figure5.pdf', 'Figure S1 — Processing diagnostics'),
+    ]:
+        gallery.append(str(ROOT / 'paper/figures' / filename), outline_item=title)
+    gallery.add_metadata({
+        '/Title': 'TGRS Figure Gallery — Seven Revised Vector Figures',
+        '/Author': 'Yichen Zhu, Mutong Li, Yongzhi Li, Guanchao Tong',
+        '/Subject': 'Figure-only review copy; captions and evidence scope are in the manuscript',
+    })
+    with (dest / 'TGRS_Figure_Gallery.pdf').open('wb') as out:
+        gallery.write(out)
     subprocess.run([sys.executable, str(ROOT / 'scripts/check_reported_values.py')], check=True)
-    for name in ['TGRS_Manuscript.pdf', 'TGRS_Supplement.pdf', 'TGRS_Complete_Manuscript.pdf']:
+    for name in ['TGRS_Manuscript.pdf', 'TGRS_Supplement.pdf',
+                 'TGRS_Complete_Manuscript.pdf', 'TGRS_Figure_Gallery.pdf']:
         print(f'{name}: {len(PdfReader(dest / name).pages)} pages')
 
 if __name__ == '__main__':

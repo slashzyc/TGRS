@@ -51,3 +51,11 @@ These checks concern the revised presentation and reported values. The original 
 - Reduced generic and repeated context while retaining specific coastal ASCAT and contemporary workflow/asset-provenance developments. No scientific observations or performance experiments were added.
 - Updated scoped AI assistance, source/derived data documentation, and numeric consistency checks.
 - Final manuscript: ten pages including references and acknowledgment, six main figures; supplement: five pages with Figure S1 and Table S3; combined copy: 15 pages. The ten-page author constraint is now a checked build gate.
+
+## v7: publication figure styling and reusable exports
+
+- Installed Scientific Visualization v1.4 from a pinned K-Dense-AI upstream revision and applied its figure-size, typography, vector-export, and evidence-preservation guidance.
+- Redesigned all seven current figures with consistent font hierarchy, restrained colors, direct values, role-specific shapes, sparse hatching, and aligned panels. The workflow now separates headings from body text; the diagnostic matrices distinguish counts from percentages.
+- Preserved every source and derived data file byte-for-byte, all figure canvas dimensions, and the source-capacity versus replay-integrity distinction.
+- Added numbered PDF, editable SVG, and 600 ppi PNG files for each figure, a seven-page figure-only gallery, and shared styling code. Original figure images and the superseded cumulative-only plot remain available for traceability.
+- Recompiled the ten-page main manuscript, five-page supplement, and 15-page reading copy; all seven displayed figures remain vector-based with embedded fonts. Scientific acquisition and replay were not rerun.
