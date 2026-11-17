@@ -1,0 +1,15 @@
+parameter,value,unit,source
+listing_requests,1232,requests,Original Figure 1
+strata,8,strata,Original Figure 1
+temporal_bins,12,bins,Original Figure 1
+primary_files,96,files,Original Figure 1
+stations,12,stations,Original Figure 1
+evaluation_stations,8,stations,Original Figure 1
+reporting_blocks,5,blocks,Original Figure 1
+capacity_threshold,400,opportunities,Original Figure 1
+cell_threshold,8,opportunities_per_cell,Original Figure 1
+files_per_round,8,files,Original Figure 1
+final_round,4,rounds,Original Figure 1
+final_opportunities,150,opportunities,Original Figure 1
+minimum_cell,0,opportunities,Original Figure 1
+outcome_reads,0,reads,Original Figure 1

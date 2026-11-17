@@ -1,0 +1,192 @@
+\section{Study Artifacts and Reproduction Notes}
+\label{sec:supp-evidence}
+
+\subsection{Status and scope of this inventory}
+This supplement records the artifacts and execution settings reported for the source study. The original project identifier is \texttt{r1-tgrs-probabilistic-72h}. All research-pack paths below refer to that project. The underlying acquisition and replay code, data, manifests, receipts, and execution logs are not included in the current public companion release. The inventory identifies materials required for independent reproduction; it does not establish that reproduction has been completed.
+
+The display tables and figures retain the reported numerical results. The commands below document the Windows execution environment used in the source study. The 27-test and 165-test passes are reports from that study; they are separate from checks of the manuscript and plotting materials in the companion repository.
+
+\subsection{Station roles and coordinates}
+Table~\ref{tab:supp-stations} reproduces the period-median coordinates and roles reported from official NDBC deployment metadata. Coordinates supplied spatial context and did not involve inspection of wind outcomes. Region names retain the original selection labels.
+
+\begin{table}[htbp]
+\caption{Station roles and period-median coordinates reported in the source study.}
+\label{tab:supp-stations}
+\centering
+\small
+\begin{tabularx}{\textwidth}{@{}lXlrr@{}}
+\toprule
+Station & Region label & Role & Latitude ($^\circ$N) & Longitude ($^\circ$E) \\
+\midrule
+41047 & Atlantic & Evaluation & 27.557 & $-71.480$ \\
+44014 & Atlantic & Evaluation & 36.603 & $-74.837$ \\
+44008 & Atlantic & Evaluation & 40.500 & $-69.254$ \\
+44020 & Atlantic & Evaluation & 41.497 & $-70.283$ \\
+42056 & Gulf of Mexico & Evaluation & 19.820 & $-84.980$ \\
+42001 & Gulf of Mexico & Evaluation & 25.922 & $-89.638$ \\
+42036 & Gulf of Mexico & Evaluation & 28.500 & $-84.505$ \\
+42035 & Gulf of Mexico & Evaluation & 29.235 & $-94.410$ \\
+41008 & Atlantic & Development & 31.400 & $-80.866$ \\
+44027 & Atlantic & Development & 44.284 & $-67.301$ \\
+42002 & Gulf of Mexico & Development & 25.950 & $-93.780$ \\
+42039 & Gulf of Mexico & Development & 28.768 & $-86.024$ \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+The reported study interval was [2026-06-17 00:00 UTC, 2026-11-04 00:00 UTC). Its five 28-day blocks began on 17 June, 15 July, 12 August, 9 September, and 7 October 2026. The official satellite origin was \texttt{https://manati.star.nesdis.noaa.gov/UHR\_COASTAL/}. The listing inventory comprised 1,232 requests collected on 4 November 2026 between 06:39:16 and 07:22:46 UTC. Within the study interval, 141 of the 560 date-prefix requests carried the joint empty-or-not-backfilled label. The narrower denominator and the ambiguity of that label are preserved.
+
+\subsection{Exact acquisition-stage totals}
+Table~\ref{tab:supp-activation} preserves the byte totals underlying the budget figure. \emph{New science bytes} include the reported probe bytes. The primary set contained 96 files, and each subsequent stage added one complete eight-file round. These are observations along the prescribed sequence, not optimized or counterfactual yields.
+
+\begin{table}[htbp]
+\caption{Acquisition stages and opportunity counts reported in the original experiment.}
+\label{tab:supp-activation}
+\centering
+\small
+\begin{tabularx}{\textwidth}{@{}Xrrrr@{}}
+\toprule
+Stage & Files & New bytes, cumulative & Opportunities & Opportunity gain \\
+\midrule
+Primary & 96 & 7,003,624,776 & 114 & 114 \\
+Alternate 1 & 104 & 7,614,139,230 & 125 & 11 \\
+Alternate 2 & 112 & 8,210,344,923 & 134 & 9 \\
+Alternate 3 & 120 & 8,800,674,162 & 145 & 11 \\
+Alternate 4 & 128 & 9,418,446,350 & 150 & 5 \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+The four alternate rounds added 610,514,454; 596,205,693; 590,329,239; and 617,772,188 bytes, respectively. Downloaded objects totaled 9,418,445,350 bytes; the additional 1,000 probe bytes equal $125\times8$. The reported final balance was 581,553,650 bytes under a 10,000,000,000-byte limit. Of 128 sources, 125 were newly downloaded and three reused existing geometry evidence by matching digest. All 125 newly downloaded raw files were deleted after verified extraction. The three reused files remained, and the final transient-raw-file count was zero.
+
+\subsection{Paths reported for the original research pack}
+The following locators are transcribed from the source record. They identify the evidence the authors reported using; listing them does not establish that the files are publicly available or present in this companion release.
+
+\subsubsection{Study contracts, station selection, and file selection}
+\begin{itemize}
+\item \path{experiment-plan/v5/replay-spec.json}:
+the v5 replay contract.
+\item \path{experiment-config/v5/feasibility-replay-freeze.json}:
+the runtime, input, evaluator, and transaction specification.
+\item \path{experiment-plan/v4.1/run-blocks.json}:
+the original time-block specification.
+\item \path{phase2_evidence/d1-v41-split-vault-repair.md}:
+the record of the development/evaluation separation introduced before outcome access.
+\item \path{experiment-data/B0/ndbc-station-selection.json}:
+the station selection and role record.
+\item \path{experiment-config/v4.1/B0/file-selector-spec.json}:
+the file-selection rules.
+\item \path{experiment-data/B0/v4-prewind-file-selection.jsonl}:
+the realized source-selection lineage.
+\end{itemize}
+
+\subsubsection{Acquisition and predictor-side material}
+\begin{itemize}
+\item \path{experiment-data/B0/v4-science-transfer-ledger.jsonl}:
+the acquisition and transfer lineage.
+\item \path{experiment-data/B0/v4-predictor-neighborhood-extracts.manifest.json}:
+the predictor-extract manifest.
+\item \path{experiment-data/B0/v4.1-predictor-neighborhoods/}:
+the predictor-side extract tree.
+\item \path{experiment-data/B0/v4.1-predictor-receipts/}:
+the tree of 128 per-file predictor receipts.
+\item \path{experiment-data/B0/v4.1-evaluation-predictor-case-manifest.parquet}:
+the 150-row, 22-field evaluation case manifest.
+\end{itemize}
+
+\subsubsection{Replay outputs and audits}
+\begin{itemize}
+\item \path{experiment-results/B0/v5-replay-contract-validation.json}:
+the reported validation and test record fixed before the final replay.
+\item \path{experiment-results/B0/v5-feasibility-replay.json}:
+the canonical replay receipt.
+\item \path{experiment-results/B0/v5-feasibility-replay.md}:
+the narrative replay output.
+\item \path{experiment-data/B0/v5-feasibility-replay-ledger.jsonl}:
+the 62-record comparison ledger.
+\item \path{results-audit/v5/results-audit.json}:
+the linked claim-level audit.
+\end{itemize}
+
+\subsubsection{Exhibits and proposed readiness schema}
+The source study locates the following files under \path{manuscript/tables/}:
+\begin{itemize}
+\item \path{fig02_station_block_opportunities.csv}:
+the station--block opportunity matrix;
+\item \path{fig03_terminal_states_by_role.csv}:
+the role-specific terminal counts;
+\item \path{fig04_budget_capacity_trace.csv}:
+the acquisition-stage trace;
+\item \path{fig05_terminal_diagnostics_by_stratum.csv},
+\path{fig05_terminal_diagnostics_by_station.csv}, and
+\path{fig05_terminal_diagnostics_by_file_sensing_block.csv}:
+the three terminal-state decompositions;
+\item \path{exhibit-manifest.json}:
+the original exhibit digest manifest; and
+\item \path{benchmark_readiness_template.schema.json}:
+the proposed project-level readiness-record schema.
+\end{itemize}
+The last schema was described as an implementation aid, not a community standard or a demonstrated serialization into STAC, RO-Crate, or BagIt.
+
+\subsubsection{Implementation, tests, and literature search}
+\begin{itemize}
+\item \path{src/r1_ascat_experiments/feasibility_replay_v5.py}:
+the reported replay implementation.
+\item \path{experiment-tests/test_feasibility_replay_v5.py}:
+the reported adversarial test suite.
+\item \path{literature-review/v5-capacity/search-boundary.md}:
+the search queries, eligibility rules, and stopping rule for the original targeted evidence map.
+\end{itemize}
+
+\subsection{Reported runtime and Windows commands}
+The source study specifies CPython 3.12.9 and PyArrow 18.1.0 in a Windows virtual environment. The replay has no stochastic model-fitting step. From the root of the original research pack, its reported validation and execution commands were:
+
+{\small
+\begin{verbatim}
+.venv-experiment/Scripts/python.exe `
+  -m r1_ascat_experiments.feasibility_replay_v5 `
+  --spec experiment-plan/v5/replay-spec.json `
+  validate
+
+.venv-experiment/Scripts/python.exe `
+  -m r1_ascat_experiments.feasibility_replay_v5 `
+  --spec experiment-plan/v5/replay-spec.json `
+  run
+\end{verbatim}
+}
+
+The original transaction required all three final outputs to be absent before execution. It committed them in the following order, with the receipt last:
+\begin{enumerate}
+\item \path{experiment-data/B0/v5-feasibility-replay-ledger.jsonl};
+\item \path{experiment-results/B0/v5-feasibility-replay.md}; and
+\item \path{experiment-results/B0/v5-feasibility-replay.json}.
+\end{enumerate}
+The receipt-last rule was intended to make an incomplete output state fail closed. It was not presented as proof of power-loss atomicity or protection against an uncooperative concurrent writer.
+
+The reported focused run contained 27 passing tests; the encompassing offline suite contained 165 passing tests. The source study gives these commands:
+
+{\small
+\begin{verbatim}
+.venv-experiment/Scripts/python.exe -m unittest discover `
+  -s experiment-tests `
+  -p test_feasibility_replay_v5.py
+
+.venv-experiment/Scripts/python.exe -m unittest discover `
+  -s experiment-tests `
+  -p test_*.py
+\end{verbatim}
+}
+
+These counts are retained as historical reports. The test code and its original logs are not included in the public companion release.
+
+\subsection{Execution lineage described in the source study}
+The source text names an entrypoint failure, \texttt{EV-000074}, before any replay output was produced. It states that this event created neither scientific output nor an eligible experiment run. Direct invocation of the frozen environment interpreter then completed the sole eligible run, \path{RUN-R1-V5-B0-FEASIBILITY-REPLAY-A1}, without changing the scientific inputs.
+
+The reported audit included that run and excluded none. Both v5 claims received the recorded verdict \path{supports_exploratory_follow_up}. A non-owner verifier approved the source run, but the audit shared the repository and implementation context; its independence check failed. No independent reproduction or higher assurance level was reported.
+
+Only the entrypoint failure and the successful replay are described in the available execution summary. A complete event-level log is not included in this release; the summary does not reconstruct missing timestamps or entries.
+
+\subsection{Provenance defects and availability}
+The source study reports two unresolved defects. A nested Parquet receipt retains a deleted staging locator even though the canonical file passes its content and schema checks. Successful transfers also lack separate per-file probe receipts: 125 \texttt{probe\_ok} nodes and the $125\times8$-byte aggregate reconcile, but the retained records cannot independently reproduce every request header and response. A locator-resolution map and complete receipts for future probes were proposed, not reported as completed repairs.
+
+The source study states that predictor extracts, manifests, per-file receipts, source URLs and digests, transfer records, and the evaluation Parquet remained in its research pack after deletion of the newly downloaded raw files. It also states that the pack was repository-local and not yet externally reproducible. No durable deposit, public research-pack URL, redistribution license, or independently implemented replay is included in this release. Those omissions remain open; the inventory and reformatted manuscript do not resolve them.

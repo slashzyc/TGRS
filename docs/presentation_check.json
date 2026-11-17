@@ -1,0 +1,40 @@
+{
+  "scope": "Presentation consistency only; no independent replay of original scientific artifacts.",
+  "status": "passed",
+  "total_opportunities": 150,
+  "capacity_requirement": 400,
+  "minimum_cell": 0,
+  "cell_requirement": 8,
+  "qualifying_cells": 3,
+  "cells": 40,
+  "evaluation_terminal_counts": [
+    150,
+    35,
+    628,
+    211
+  ],
+  "development_terminal_counts": [
+    68,
+    30,
+    271,
+    143
+  ],
+  "final_acquisition_bytes": 9418446350,
+  "remaining_budget_bytes": 581553650,
+  "final_keys": 1942,
+  "diagnostic_count_cells_checked": 84,
+  "references": 18,
+  "abstract_words": 234,
+  "pdfs": [
+    {
+      "file": "TGRS_Manuscript.pdf",
+      "pages": 10,
+      "all_fonts_embedded": true
+    },
+    {
+      "file": "TGRS_Supplement.pdf",
+      "pages": 4,
+      "all_fonts_embedded": true
+    }
+  ]
+}

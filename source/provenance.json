@@ -1,0 +1,11 @@
+{
+  "source_type": "user-supplied manuscript PDF",
+  "source_filename": "manuscript(2).pdf",
+  "source_sha256": "0bd43789bfa606b1dd64de3bdbf6da611d76a9c3338ac924adbd3c8a4fcd0b84",
+  "pages": 20,
+  "revision_date_local": "2026-11-16",
+  "revision_scope": "language, structure, authorship, disclosure, IEEE presentation, and display-data transcription",
+  "original_experimental_artifacts_provided": false,
+  "independent_scientific_reproduction_performed": false,
+  "source_figures_extracted_without_image_generation": 5
+}
