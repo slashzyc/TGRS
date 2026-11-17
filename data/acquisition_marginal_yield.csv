@@ -1,0 +1,5 @@
+alternate_round,source_previous_stage,source_current_stage,additional_evaluation_opportunities,new_science_bytes,new_science_decimal_gb,opportunities_per_decimal_gb
+1,Primary,Alternative_1,11,610514454,0.610514454,18.01759143936664
+2,Alternative_1,Alternative_2,9,596205693,0.596205693,15.095461357830407
+3,Alternative_2,Alternative_3,11,590329239,0.590329239,18.633669608901076
+4,Alternative_3,Alternative_4,5,617772188,0.617772188,8.0935984123649156

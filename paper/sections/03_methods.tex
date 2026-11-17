@@ -2,9 +2,16 @@
 \subsection{Public sources and study period}
 The source study used official, account-free NOAA services. Satellite files were selected from \url{https://manati.star.nesdis.noaa.gov/UHR_COASTAL/}, without redirects or credentials. A listing inventory of 1,232 requests was collected on 4 November 2026 between 06:39:16 and 07:22:46 UTC and bound to the protocol by cryptographic digests. Listing metadata defined the candidate universe; they did not establish each file's original dissemination time, continued availability, or processor version.
 
-The study interval was 17 June 2026, 00:00 UTC, through 4 November 2026, 00:00 UTC, with the final endpoint excluded. Five consecutive 28-day blocks began on 17 June, 15 July, 12 August, 9 September, and 7 October. The eight evaluation stations were 41047, 42001, 42035, 42036, 42056, 44008, 44014, and 44020. The four development stations were 41008, 42002, 42039, and 44027. Station coordinates and the source protocol's region assignments are provided in Supplementary Table~S1.
+The study interval was 17 June 2026, 00:00 UTC, through 4 November 2026, 00:00 UTC, with the final endpoint excluded. Five consecutive 28-day blocks began on 17 June, 15 July, 12 August, 9 September, and 7 October. The eight evaluation stations were 41047, 42001, 42035, 42036, 42056, 44008, 44014, and 44020. The four development stations were 41008, 42002, 42039, and 44027. Figure~\ref{fig:stations} places the reported station coordinates in their geographic context; the roles and original selection labels are listed in Supplementary Table~S1.
 
 Station selection used official static metadata and time coordinates. Within each region, eligible stations were divided into four latitude-rank bins, and a stable salted hash selected one evaluation station per bin. The remaining candidates were repartitioned into two bins per region; a different salt selected disjoint development stations. This separation was introduced in the version-4-to-4.1 protocol repair before recorded wind-outcome access. No wind speed, wind direction, or outcome-side ancillary variable was used in the selection.
+
+\begin{figure*}[!t]
+\centering
+\includegraphics[width=\textwidth]{figures/station_map.pdf}
+\caption{Reported station locations and study roles. Coordinates are transcribed from the source study's period-median deployment record. The northeastern inset separates nearby stations. Land outlines use Natural Earth at 1:50 million scale \cite{naturalearthland}. This is a geographic context map, not a satellite-coverage map. Station 42056 retains the original Gulf selection label; its association with the selected product footprints remains unverified.}
+\label{fig:stations}
+\end{figure*}
 
 \subsection{File selection and alternate rounds}
 Eight file strata crossed the Atlantic and Gulf product sectors (\texttt{ec}/\texttt{gc}), MetOp-B and MetOp-C, and ascending and descending passes. Each stratum was divided into 12 equal time bins. One salted-hash minimum per stratum and time bin supplied the 96 primary files.
@@ -69,5 +76,7 @@ The three final outputs had to be absent before execution. A lock protected the 
 
 \subsection{Audit scope and statistical treatment}
 The original record contains one eligible version-5 replay run, identified as \texttt{RUN-R1-V5-B0-FEASIBILITY-REPLAY-A1}. It was linked to both audit claims and verified by a non-owner within the same research environment. The subsequent result audit included that run and excluded none. It recorded agreement for protocol, metrics, outcome accounting, provenance, and continuity, but failed its formal independence check because the audit shared the source implementation and repository context. The resulting classification was exploratory support rather than independent confirmation.
+
+For the descriptive acquisition profile, each alternate round's marginal yield was its additional evaluation opportunities divided by the volume of additional transferred science data in decimal GB. This ratio summarizes the realized sequence and does not compare unexecuted policies.
 
 All reported counts enumerate the selected universe. They are not estimates obtained from a probability sample of the wider NOAA archive. We therefore report neither confidence intervals nor significance tests. Generalization to other file selections, stations, or periods requires a separately specified population and analysis design. Supplementary material lists the execution commands and artifact paths reported for the source study. Independent reproduction is outside the evidence provided here.

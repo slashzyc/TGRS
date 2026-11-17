@@ -1,0 +1,13 @@
+station,source_region_label,role,latitude_deg_n,longitude_deg_e
+41047,Atlantic,Evaluation,27.557,-71.480
+44014,Atlantic,Evaluation,36.603,-74.837
+44008,Atlantic,Evaluation,40.500,-69.254
+44020,Atlantic,Evaluation,41.497,-70.283
+42056,Gulf of Mexico,Evaluation,19.820,-84.980
+42001,Gulf of Mexico,Evaluation,25.922,-89.638
+42036,Gulf of Mexico,Evaluation,28.500,-84.505
+42035,Gulf of Mexico,Evaluation,29.235,-94.410
+41008,Atlantic,Development,31.400,-80.866
+44027,Atlantic,Development,44.284,-67.301
+42002,Gulf of Mexico,Development,25.950,-93.780
+42039,Gulf of Mexico,Development,28.768,-86.024

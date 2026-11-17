@@ -15,6 +15,7 @@ This repository contains the manuscript prepared for **IEEE Transactions on Geos
 - [Main manuscript in IEEE journal format](deliverables/TGRS_Manuscript.pdf)
 - [Supplementary material](deliverables/TGRS_Supplement.pdf)
 - [Revision notes](docs/revision_notes.md)
+- [Figure guide and assistance scope](docs/figure_guide.md)
 - [Submission audit, 17 November 2026](docs/submission_audit_2026-11-17.md)
 
 ## What the study reports
@@ -27,8 +28,9 @@ Included:
 
 - Editable LaTeX manuscript and supplemental text.
 - IEEEtran journal class, unmodified, with its original license notice.
-- Five vector figures and the original figure images extracted from the supplied manuscript.
-- CSV transcriptions of values explicitly printed in the source manuscript.
+- Six displayed vector figures: five in the main text and one in the supplement, plus the earlier figure versions and original extracted images.
+- A station map with a bundled Natural Earth land subset and a cost plot with a descriptive marginal-yield panel.
+- CSV transcriptions of source counts and coordinates, plus a separately labeled arithmetic derivation of marginal yields.
 - Plotting, document-building, and presentation-consistency utilities.
 - Reference-verification, policy, provenance, and revision records.
 
@@ -56,16 +58,18 @@ The committed vector figures are sufficient for compiling the manuscript. To reg
 
 ```bash
 python scripts/render_figures.py
+python scripts/render_station_map.py
+python scripts/render_acquisition_profile.py
 ```
 
 The numeric checks verify internal consistency of the **reported** display values. They do not validate the original observation acquisition or reproduce its outcome-access audit.
 
 ## Author review and declarations
 
-Author order and shared second authorship follow the supplied instructions. The corresponding author’s affiliation and public professional email were checked against [Wenzhou-Kean University](https://csmt.wku.edu.cn/en/node/2000). At the author's request, the current manuscript omits the earlier AI-assistance acknowledgment. Compliance with IEEE's disclosure policy has therefore not been cleared for this edition; see the [submission audit](docs/submission_audit_2026-11-17.md). Funding, competing interests, individual contribution roles, and approvals have not been invented; the authors must supply any applicable information before submission.
+Author order and shared second authorship follow the supplied instructions. The corresponding author’s affiliation and public professional email were checked against [Wenzhou-Kean University](https://csmt.wku.edu.cn/en/node/2000). The current manuscript includes a scoped AI-assistance acknowledgment. It identifies the preparation tasks that used ChatGPT, including language revision, LaTeX, figure layouts, plotting code, and editorial checks, while identifying the source manuscript and public basemap as the numerical and geographic inputs. It does not characterize the original scientific study as AI-generated. Funding, competing interests, individual contribution roles, and approvals have not been invented; the authors must supply any applicable information before submission.
 
 See [TGRS policy notes](docs/tgrs_policy_notes.md), [reference verification](docs/reference_verification.md), and [editorial tools](docs/editorial_tools.md).
 
 ## Rights
 
-No new blanket license is asserted for the manuscript, its source-study results, or NOAA-derived material. Rights remain with the respective holders. IEEEtran retains its original LaTeX Project Public License notice. Public availability of the companion files is not a claim that all underlying source data may be redistributed without review.
+No new blanket license is asserted for the manuscript, its source-study results, or NOAA-derived material. Rights remain with the respective holders. IEEEtran retains its original LaTeX Project Public License notice. The bundled Natural Earth land subset is public domain; its immutable source and version are recorded in `data/basemaps/natural_earth_provenance.json`. Public availability of the companion files is not a claim that all underlying source data may be redistributed without review.

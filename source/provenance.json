@@ -9,5 +9,11 @@
   "independent_scientific_reproduction_performed": false,
   "source_figures_extracted_without_image_generation": 5,
   "last_editorial_revision_date_local": "2026-11-17",
-  "submission_readiness_certified": false
+  "submission_readiness_certified": false,
+  "ai_assistance_disclosed": true,
+  "current_main_figures": 5,
+  "current_supplementary_figures": 1,
+  "new_scientific_observations_generated": false,
+  "new_descriptive_derivation": "Four alternate-round opportunity increments divided by transfer increments in decimal GB",
+  "external_context_dataset": "Natural Earth 1:50m land, version 4.0.0; see data/basemaps/natural_earth_provenance.json"
 }

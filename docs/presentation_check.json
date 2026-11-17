@@ -23,8 +23,8 @@
   "remaining_budget_bytes": 581553650,
   "final_keys": 1942,
   "diagnostic_count_cells_checked": 84,
-  "references": 18,
-  "abstract_words": 244,
+  "references": 19,
+  "abstract_words": 243,
   "pdfs": [
     {
       "file": "TGRS_Manuscript.pdf",
@@ -33,11 +33,51 @@
     },
     {
       "file": "TGRS_Supplement.pdf",
-      "pages": 4,
+      "pages": 5,
       "all_fonts_embedded": true
     }
   ],
-  "ai_assistance_disclosure_in_manuscript": false,
-  "submission_policy_status": "not_cleared",
-  "policy_note": "Presentation checks do not certify submission readiness. See docs/submission_audit_2026-11-17.md for the AI-disclosure policy review and unresolved scientific evidence requirements."
+  "mapped_stations": 12,
+  "marginal_opportunities_per_decimal_gb": [
+    18.01759143936664,
+    15.095461357830407,
+    18.633669608901076,
+    8.093598412364916
+  ],
+  "figures": [
+    {
+      "file": "paper/figures/figure1.pdf",
+      "document": "paper",
+      "vector": true
+    },
+    {
+      "file": "paper/figures/station_map.pdf",
+      "document": "paper",
+      "vector": true
+    },
+    {
+      "file": "paper/figures/figure2.pdf",
+      "document": "paper",
+      "vector": true
+    },
+    {
+      "file": "paper/figures/figure3.pdf",
+      "document": "paper",
+      "vector": true
+    },
+    {
+      "file": "paper/figures/acquisition_profile.pdf",
+      "document": "paper",
+      "vector": true
+    },
+    {
+      "file": "paper/figures/figure5.pdf",
+      "document": "supplement",
+      "vector": true
+    }
+  ],
+  "ai_assistance_disclosure_in_manuscript": true,
+  "ai_disclosure_status": "tool, affected preparation tasks, and evidence boundaries stated",
+  "submission_readiness_status": "author review and original scientific evidence still required",
+  "policy_note": "Presentation checks do not certify submission readiness. The scoped AI-assistance acknowledgment has been restored. See docs/submission_audit_2026-11-17.md for unresolved scientific evidence requirements."
 }

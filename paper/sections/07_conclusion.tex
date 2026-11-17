@@ -1,8 +1,8 @@
 \section{Conclusion}
 \label{sec:conclusion}
 
-The selected NOAA Coastal UHR ASCAT benchmark did not provide the predictor support required by its original protocol. After 96 primary files and four complete alternate rounds, it contained 150 unique evaluation opportunities against a requirement of 400. The minimum station--block count was zero, and only three of 40 cells reached eight. The workflow recorded zero NDBC wind-outcome reads and kept its performance stage closed, so no wind-performance hypothesis was tested.
+The fixed 128-file NOAA Coastal UHR ASCAT design failed its configured capacity rule: it contained 150 evaluation opportunities against 400 required, a minimum station--block count of zero, and only three of 40 cells reaching eight. Its workflow recorded zero NDBC wind-outcome reads and kept performance evaluation closed.
 
-A subsequent deterministic replay reproduced the decision, terminal counts, transfer accounting, and case-manifest checks. Its integrity pass left the capacity failure unchanged and preserved two unresolved provenance limitations. Together, these results illustrate an implementable way to assess support for a planned benchmark before authorizing access to its reference outcomes.
+The reported deterministic replay reproduced the decision and supporting records while preserving two provenance defects. It illustrates why a consistent audit record and sufficient benchmark support require separate verdicts. The evidence remains specific to this selection and its thresholds; no wind-performance hypothesis was tested.
 
-The result concerns this selection and these thresholds. It does not establish poor ASCAT performance, an optimal sampling budget, or insufficient support throughout the archive. Future work should justify capacity thresholds from the intended analysis, test alternative designs prospectively, and release the evidence needed for an independent replay.
+Further work should justify thresholds from the intended analysis, verify station-to-product coverage and extraction semantics, and test alternative designs prospectively. Releasing the original implementation and artifacts is necessary to make the reported workflow independently reconstructable.

@@ -1,0 +1,23 @@
+{
+  "dataset": "Natural Earth 1:50m physical land polygons",
+  "version": "4.0.0",
+  "source_repository": "https://github.com/nvkelso/natural-earth-vector",
+  "source_path": "geojson/ne_50m_land.geojson",
+  "source_commit": "693f11422f4e08d2da4566b854dda53eb7c39fb3",
+  "source_git_blob_sha": "c412c52b5286ba727dcb7047ecd6080bcbeb8298",
+  "source_url": "https://github.com/nvkelso/natural-earth-vector/blob/693f11422f4e08d2da4566b854dda53eb7c39fb3/geojson/ne_50m_land.geojson",
+  "version_file_url": "https://github.com/nvkelso/natural-earth-vector/blob/693f11422f4e08d2da4566b854dda53eb7c39fb3/50m_physical/ne_50m_land.VERSION.txt",
+  "license": "Public domain",
+  "license_url": "https://www.naturalearthdata.com/about/terms-of-use/",
+  "retrieved_date": "2026-11-17",
+  "regional_selection_bbox_lonlat": [
+    -99,
+    16,
+    -63,
+    47
+  ],
+  "selection_rule": "Keep complete source features whose provided bounding boxes intersect the selection box. Original geometries are unchanged; map axes clip only the rendered view.",
+  "features": 92,
+  "subset_sha256": "eefcb284c397fbcfb82210e0bda23ba7858a002d1d84722d8b8f2177d7043914",
+  "use": "Geographic context only; no satellite coverage or product-sector boundary is inferred."
+}

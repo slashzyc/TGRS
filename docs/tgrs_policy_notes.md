@@ -64,17 +64,13 @@ The TGRS author instructions call for ORCID identifiers for the authors. Only ge
 
 ## AI-assisted revision disclosure
 
-The [IEEE journal submission and peer-review policy](https://journals.ieeeauthorcenter.ieee.org/become-an-ieee-journal-author/publishing-ethics/guidelines-and-policies/submission-and-peer-review-policies/) says that AI-generated content must be disclosed in the **Acknowledgments** section, identifying the system, the affected article sections, and the extent of use. Editing and grammar enhancement are generally outside the mandatory scope, but disclosure is recommended. The first revision included a disclosure. The author requested its removal on 17 November 2026, and the current manuscript omits it. Because the actual assistance included extensive rewriting and plotting-code generation, the editing/grammar exemption cannot safely be assumed; the current edition is not certified as complying with this policy.
+The [IEEE journal policy](https://journals.ieeeauthorcenter.ieee.org/become-an-ieee-journal-author/publishing-ethics/guidelines-and-policies/submission-and-peer-review-policies/) calls for an acknowledgment identifying the AI system, affected article parts, and extent of generated content. Ordinary editing/grammar assistance is generally outside the mandatory scope. The current revision describes the actual broader preparation assistance instead of assuming that exemption.
 
-The policy also advises excluding references from ordinary AI grammar-editing passes. Here, reference changes are handled as a separate bibliographic check documented in [reference_verification.md](reference_verification.md), rather than unrestricted stylistic paraphrasing of titles or author names.
+The author requested a scoped disclosure after an intermediate version omitted it. The current Acknowledgment identifies ChatGPT (OpenAI), language and organizational revision in the Abstract, Sections I–VIII, captions and supplementary text, LaTeX, figure layouts, and Python plotting/editorial-checking code. “Specific parts” refers to these preparation tasks, not to an unsupported claim that only one or two figures used AI. Earlier figure redrawing also involved AI-assisted code.
 
-The disclosure must describe what occurred in **this revision**, without making unsupported claims about how the original study was conducted or written. A suitable form is:
+The acknowledgment identifies the supplied manuscript as the source of scientific counts, station coordinates, and prior audit outcomes; Natural Earth supplies the basemap. Marginal yield is an explicit calculation from existing counts and bytes. No new observations were generated and the original acquisition/replay experiments were not run in this revision. No completed human-author verification or approval is asserted.
 
-> ChatGPT (OpenAI) was used during revision to assist with language editing, sentence-level rephrasing, and organization of the Abstract and the main text. No new experimental results were produced through this editing process.
-
-The final version should name the actual affected sections or their final numbering. If table titles or figure captions were also revised, those changes should be included in the scope. The tool should not be listed as an author. An assertion that all authors have already reviewed, verified, or approved the AI-assisted changes must wait for actual human approval; this editing workflow does not record that event.
-
-The purpose of the language revision is clearer and more natural scientific writing. No result from an AI-text detector was obtained, and no claim of detector avoidance or proof of exclusively human authorship is made.
+Reference metadata were checked separately from prose editing; see [reference_verification.md](reference_verification.md). An AI-text-detector score is not part of this workflow or a submission-readiness criterion.
 
 ## Availability and repository wording
 

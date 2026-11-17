@@ -3,6 +3,7 @@
 from __future__ import annotations
 import csv
 import json
+import math
 from pathlib import Path
 import re
 import shutil
@@ -71,6 +72,34 @@ def main():
     require(9418445350+125*8==expected_bytes[-1], 'Probe accounting mismatch')
     require(10000000000-expected_bytes[-1]==581553650, 'Budget balance mismatch')
 
+    marginal=rows('acquisition_marginal_yield.csv')
+    require(len(marginal)==4,'Expected four alternate-round marginal yields')
+    marginal_values=[]
+    for i,row in enumerate(marginal):
+        byte_gain=expected_bytes[i+1]-expected_bytes[i]
+        opportunity_gain=expected_opportunities[i+1]-expected_opportunities[i]
+        require(int(row['alternate_round'])==i+1,'Alternate rounds out of order')
+        require(int(row['new_science_bytes'])==byte_gain,'Marginal byte increment mismatch')
+        require(int(row['additional_evaluation_opportunities'])==opportunity_gain,
+                'Marginal opportunity increment mismatch')
+        gb=byte_gain/1e9
+        require(math.isclose(float(row['new_science_decimal_gb']),gb,rel_tol=0,abs_tol=1e-12),
+                'Marginal decimal-GB conversion mismatch')
+        value=opportunity_gain/gb
+        require(math.isclose(float(row['opportunities_per_decimal_gb']),value,rel_tol=0,abs_tol=1e-12),
+                'Marginal yield calculation mismatch')
+        marginal_values.append(value)
+
+    stations=rows('station_locations.csv')
+    supplement=(ROOT/'supplement/original_evidence_inventory.tex').read_text()
+    reported=re.findall(r'^(\d{5}) & (.*?) & (Evaluation|Development) & ([0-9.]+) & \$(-[0-9.]+)\$ \\\\',
+                        supplement,re.M)
+    require(len(stations)==len(reported)==12,'Expected twelve source-reported station locations')
+    actual={r['station']:(r['source_region_label'],r['role'],float(r['latitude_deg_n']),float(r['longitude_deg_e']))
+            for r in stations}
+    expected_stations={station:(region,role,float(lat),float(lon)) for station,region,role,lat,lon in reported}
+    require(actual==expected_stations,'Map coordinates, roles or source selection labels differ from Table S1')
+
     diagnostics=rows('figure5_terminal_counts.csv')
     percentages={(r['panel'],r['group']):r for r in rows('figure5_display_percentages.csv')}
     panels=sorted({r['panel'] for r in diagnostics})
@@ -98,7 +127,7 @@ def main():
             if key not in cited:cited.append(key)
     bib=re.findall(r'\\bibitem\{([^}]+)\}',(ROOT/'paper/references.tex').read_text())
     require(cited==bib,'Bibliography is missing a citation or is not in first-citation order')
-    require(len(bib)==18,'Expected original 17 references plus one verified addition')
+    require(len(bib)==19,'Expected the 18 prior references plus the Natural Earth basemap citation')
     labels=re.findall(r'\\label\{([^}]+)\}',text)
     require(len(labels)==len(set(labels)),'Duplicate LaTeX labels')
     require(set(re.findall(r'\\ref\{([^}]+)\}',text))<=set(labels),'Unresolved label in source')
@@ -106,6 +135,20 @@ def main():
     abstract=re.sub(r'\\(?:begin|end)\{abstract\}','',abstract)
     abstract_words=len(abstract.split())
     require(150<=abstract_words<=250,'Abstract outside 150–250-word range')
+
+    graphics_pattern=r'\\includegraphics(?:\[[^\]]*\])?\{([^}]+)\}'
+    figure_files=[('paper',relative) for relative in re.findall(graphics_pattern,text)]
+    supplement_graphics=(ROOT/'supplement/additional_diagnostics.tex').read_text()
+    figure_files.extend(('supplement',relative) for relative in re.findall(graphics_pattern,supplement_graphics))
+    figure_reports=[]
+    for base,relative in figure_files:
+        figure=fitz.open(ROOT/base/relative)
+        require(len(figure)==1 and not figure[0].get_images(),'Expected a single-page vector scientific figure')
+        if relative.endswith('station_map.pdf'):
+            labels_text=figure[0].get_text()
+            require(all(station in labels_text for station in expected_stations),'A station label is missing from the map')
+        figure_reports.append({'file':str((ROOT/base/relative).resolve().relative_to(ROOT)),
+                               'document':base,'vector':True})
 
     pdf_reports=[]
     ai_disclosure_present=False
@@ -127,6 +170,7 @@ def main():
             require(embedded,f'Unembedded fonts in {file.name}')
         if file.name=='TGRS_Manuscript.pdf':
             ai_disclosure_present='ChatGPT (OpenAI)' in extracted
+            require(ai_disclosure_present,'The requested AI-assistance acknowledgment is missing')
             require('tguancha@kean.edu' in extracted,'Corresponding author email missing')
             require('share second authorship' in extracted,'Shared-second-authorship note missing')
         pdf_reports.append({'file':file.name,'pages':len(doc),'all_fonts_embedded':embedded})
@@ -139,11 +183,14 @@ def main():
         'final_acquisition_bytes':9418446350,'remaining_budget_bytes':581553650,
         'final_keys':1942,'diagnostic_count_cells_checked':84,
         'references':len(bib),'abstract_words':abstract_words,'pdfs':pdf_reports,
+        'mapped_stations':len(stations),'marginal_opportunities_per_decimal_gb':marginal_values,
+        'figures':figure_reports,
         'ai_assistance_disclosure_in_manuscript':ai_disclosure_present,
-        'submission_policy_status':'not_cleared',
+        'ai_disclosure_status':'tool, affected preparation tasks, and evidence boundaries stated',
+        'submission_readiness_status':'author review and original scientific evidence still required',
         'policy_note':('Presentation checks do not certify submission readiness. '
-                       'See docs/submission_audit_2026-11-17.md for the AI-disclosure policy '
-                       'review and unresolved scientific evidence requirements.'),
+                       'The scoped AI-assistance acknowledgment has been restored. '
+                       'See docs/submission_audit_2026-11-17.md for unresolved scientific evidence requirements.'),
     }
     (ROOT/'docs/presentation_check.json').write_text(json.dumps(report,indent=2)+'\n')
     print(json.dumps(report,indent=2))

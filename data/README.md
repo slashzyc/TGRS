@@ -1,8 +1,10 @@
-# Figure values transcribed from the supplied manuscript
+# Figure inputs, source transcriptions, and explicit derivations
 
-These CSV files contain aggregate values explicitly printed in the user's original
-`manuscript(2).pdf`, its figures, and its budget/capacity table. They are an editorial
-transcription for reproducible figure rendering. They are **not** independently
+The original `figure*.csv` files contain aggregate values explicitly printed in the supplied
+`manuscript(2).pdf`, its figures, and its budget/capacity table. `station_locations.csv`
+transcribes its reported coordinates. `acquisition_marginal_yield.csv` is an explicit arithmetic
+derivation from the original budget table. The land subset has its own external provenance.
+These inputs support reproducible figure rendering. They are **not** independently
 reproduced experimental results, raw NOAA observations, station-file logs, or an
 implementation of the study's analysis pipeline.
 
@@ -21,6 +23,9 @@ from unlabelled plotted positions or create new observations.
 | `figure4_budget_capacity.csv` | Five exact byte totals from the manuscript's budget/capacity record, with the corresponding active-file counts, opportunity totals, and increments shown in original Figure 4. Byte totals use decimal GB when plotted (1 GB = 1,000,000,000 bytes). |
 | `figure5_terminal_counts.csv` | All 84 labelled terminal-state counts in the three original Figure 5 panels. `total` is the printed within-row denominator. Source-block grouping uses source-file sensing time and must not be equated with the reporting-block grouping in Figure 2. |
 | `figure5_display_percentages.csv` | All 84 percentage labels printed in original Figure 5, retained separately to check rounding and transcription. |
+| `station_locations.csv` | The 12 source-reported station coordinates, study roles and unchanged selection labels; used in current Figure 2. |
+| `acquisition_marginal_yield.csv` | Four differences of consecutive acquisition totals, followed by additional opportunities / (additional bytes / 1e9); used in current Figure 5(b). |
+| `basemaps/natural_earth_50m_land_station_region.geojson` | An offline subset of the cited public-domain Natural Earth land dataset; geographic context only. |
 
 The terminal-state column order is valid extraction, fewer than two valid
 candidates, no overlap, and invalid time. `ec`/`gc`, platform B/C, and AS/DS
@@ -45,8 +50,12 @@ The vector figures are generated with:
 
 ```bash
 python3 scripts/render_figures.py
+python3 scripts/render_station_map.py
+python3 scripts/render_acquisition_profile.py
 ```
 
 This checks internal arithmetic and reproduces the revised visual presentation.
 It does not independently establish the provenance, completeness, or scientific
 validity of the original experimental record.
+
+Original figure numbers in CSV filenames are retained for traceability. Current manuscript numbering is listed in `docs/figure_guide.md`. In particular, original Figure 5 is now Supplementary Figure S1.

@@ -206,3 +206,13 @@ This record checks bibliographic identity and whether the intended citation role
 5. The original literature-map dates and archived-search claims remain reports from the source manuscript. This workflow has not reconstructed those searches or established exhaustive novelty.
 6. No unrelated references were added to the scientific bibliography. Editorial software and skill provenance belong in the separate editorial-tools record.
 7. Human authors still need to approve source interpretation, the final wording, the bibliography, and any statement that depends on the unavailable original research pack.
+
+## R19 — Natural Earth basemap (added 17 November 2026)
+
+Natural Earth, *Land, 1:50 million scale*, vector dataset version 4.0.0. This is a source attribution for the new station map, not a remote-sensing performance baseline.
+
+- The retrieved repository version and immutable file commit are recorded in [station_map_provenance.md](station_map_provenance.md).
+- The website download page and the version file at the pinned repository commit both identify version 4.0.0. The manuscript records that version and links the exact source commit.
+- The local regional subset retains 92 complete source features without changing their coordinates. SHA-256 and selection bounds are recorded in `data/basemaps/natural_earth_provenance.json`.
+- The [official terms](https://www.naturalearthdata.com/about/terms-of-use/) identify the dataset as public domain.
+- Access date is 17 November 2026; it is not represented as the dataset's publication year.

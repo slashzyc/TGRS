@@ -2,24 +2,24 @@
 
 ## Assessment
 
-**Presentation: passed after the limited corrections below. Scientific and policy readiness: not established.** The current manuscript is an exploratory audit of one selected design. Its internal reported counts are consistent, but the available companion materials do not establish independent scientific reproducibility or the methodological advance expected of a TGRS contribution.
+**Presentation: passed after the current revisions. The AI acknowledgment is restored with a stated scope; scientific readiness and human-author approval remain unestablished.** The current manuscript is an exploratory audit of one selected design. Its internal reported counts are consistent, but the available companion materials do not establish independent scientific reproducibility or the methodological advance expected of a TGRS contribution.
 
-At the author's request, the AI-assistance acknowledgment has been removed from the manuscript. That editing action is not a finding of compliance. IEEE distinguishes ordinary editing/grammar assistance from AI-generated article content, including text, figures, and code. The recorded work included extensive rewriting and plotting-code generation, so the grammar-only exemption cannot safely be assumed. Before submission, the authors should restore an accurate disclosure or obtain an explicit editorial determination that an exemption applies. See [IEEE's current policy](https://journals.ieeeauthorcenter.ieee.org/become-an-ieee-journal-author/publishing-ethics/guidelines-and-policies/submission-and-peer-review-policies/).
+The current version restores the AI-assistance acknowledgment following the author's request to identify the specific tasks involved. It names ChatGPT (OpenAI), the affected text sections, LaTeX preparation, figure layouts, plotting code, and editorial checks. It distinguishes this preparation work from the source study's reported observations and audit results. This addresses the earlier missing-disclosure issue without claiming that the entire scientific study was AI-generated or that all authors have already approved the revision. See [IEEE's policy](https://journals.ieeeauthorcenter.ieee.org/become-an-ieee-journal-author/publishing-ethics/guidelines-and-policies/submission-and-peer-review-policies/).
 
 ## Verified presentation
 
 | Item | Observed state |
 | --- | --- |
 | Main manuscript | IEEEtran journal template, 10-point body, two columns, US Letter; 10 pages |
-| Supplement | Separate title, authors, page numbering, and supplementary table numbers; four pages |
-| Complete reading copy | Main manuscript followed by supplement; 14 pages |
-| Abstract | One paragraph, 244 words; no citation, footnote, or displayed equation; NOAA expanded |
+| Supplement | Separate title, authors, page numbering, and supplementary table and figure numbers; five pages |
+| Complete reading copy | Main manuscript followed by supplement; 15 pages |
+| Abstract | One paragraph, 243 words; no citation, footnote, or displayed equation; NOAA expanded |
 | Index Terms | Five entries in alphabetical order |
 | Authors | Four names, affiliations, shared-second-authorship note, corresponding author and email |
-| Figures | Five vector PDFs; captions and references present; Figure 5 codes now explained |
-| References | 18 numbered entries in first-citation order; no unresolved citation keys |
+| Figures | Five main figures and Supplementary Figure S1, all vector; new station map and marginal-yield panel included |
+| References | 19 numbered entries in first-citation order, including the Natural Earth basemap; no unresolved citation keys |
 | PDF integrity | Embedded fonts, no unresolved references, no overfull text lines or detected clipping |
-| Reported values | Matrix, terminal-state marginals, 84 diagnostic counts, displayed percentages, acquisition arithmetic, and key totals reconcile |
+| Reported values | Matrix, terminal-state marginals, 84 diagnostic counts, percentages, transfer arithmetic, 12 mapped coordinates and four marginal-yield calculations reconcile |
 
 The machine-readable numerical and PDF results are in [presentation_check.json](presentation_check.json). These are checks of presentation and transcription, not of the original experimental inputs. Bibliographic metadata and numbering checks are not a claim that all scientific propositions in all cited full texts have undergone independent human verification.
 
@@ -69,6 +69,6 @@ The 211 evaluation records classified as time-invalid require representative und
 
 ## Changes in this follow-up
 
-The acknowledgment was removed as requested; NOAA was expanded in the abstract; Figure 5 codes were defined; shared-second-authorship styling was corrected; absolute outcome-access wording was limited to the recorded workflow; and the station 42056 mapping limitation was made explicit. All original numerical results, station assignments, and capacity/replay decisions remain unchanged. No scientific acquisition or experiment was run.
+The scoped acknowledgment was restored; a station map and marginal-yield panel were added; the detailed diagnostic figure was moved to Supplementary Figure S1; and about 500 words of repetitive discussion were removed. The contribution and threshold claims were tightened, NOAA was expanded, figure codes were defined, author-note styling was corrected, and outcome-access wording was limited to the recorded workflow. All original numerical results, station assignments, and capacity/replay decisions remain unchanged. No scientific acquisition or experiment was run.
 
-**Recommended disposition:** retain this as a revised pre-submission draft. Resolve the disclosure policy, provide the original evidence, verify the station/product mapping and selection implementation, and have the human authors assess the methodological contribution before treating it as ready for TGRS review.
+**Recommended disposition:** retain this as a revised pre-submission draft. Provide the original evidence, verify the station/product mapping and selection implementation, and have the human authors assess the methodological contribution before treating it as ready for TGRS review.

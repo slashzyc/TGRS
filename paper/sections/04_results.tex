@@ -89,30 +89,25 @@ Recorded NDBC outcome reads & 0 \\
 \end{figure}
 
 \subsection{Opportunity gains along the prescribed acquisition sequence}
-The primary set yielded 114 opportunities from 96 files and used 7,003,624,776 new science bytes. Successive complete alternate rounds added 11, 9, 11, and five opportunities, taking the cumulative totals to 125, 134, 145, and 150. Figure~\ref{fig:budget} plots the five realized stages. The additional byte costs were 610,514,454; 596,205,693; 590,329,239; and 617,772,188, respectively. Round~4 therefore had the lowest observed marginal opportunity yield. Exact cumulative values are retained in the supplementary inventory.
+The primary set yielded 114 opportunities from 96 files and used 7,003,624,776 new science bytes. Successive complete alternate rounds added 11, 9, 11, and five opportunities, taking the cumulative totals to 125, 134, 145, and 150. Figure~\ref{fig:budget}(a) plots the five realized stages. The additional byte costs were 610,514,454; 596,205,693; 590,329,239; and 617,772,188, respectively. Dividing each round's additional opportunities by its transferred science data in decimal GB gives 18.02, 15.10, 18.63, and 8.09 opportunities per decimal GB [Fig.~\ref{fig:budget}(b)]. Round~4 had the lowest realized marginal yield despite a transfer cost similar to the preceding rounds. Exact cumulative values are retained in the supplementary inventory.
 
 The complete sequence used 9,418,446,350 new science bytes, or 9.418 decimal GB. This left 581,553,650 bytes below the 10,000,000,000-byte limit, but no further alternate round was permitted. The final stop followed exhaustion of the registered file sequence, not depletion of every remaining byte. The five plotted points describe that sequence only; they do not establish an optimal file-selection policy or a budget frontier.
 
 
-\begin{figure}[!t]
+\begin{figure*}[!t]
 \centering
-\includegraphics[width=\columnwidth]{figures/figure4.pdf}
-\caption{Cumulative evaluation opportunities and acquisition cost after the primary set and each complete alternate round. Cost is in decimal GB and includes probe bytes. The points describe the executed sequence; the dashed line is the required total of 400 opportunities.}
+\includegraphics[width=\textwidth]{figures/acquisition_profile.pdf}
+\caption{Acquisition capacity and descriptive marginal yield. (a) Cumulative evaluation opportunities after the primary set and each complete alternate round. The upper axis gives the active-file count; the horizontal dashed line marks the 400-opportunity requirement and the vertical dotted line the 10-GB limit. (b) Additional evaluation opportunities divided by the additional decimal GB transferred in each alternate round. Labels within bars show added counts and transfer costs. Costs include probe bytes. These summaries describe the executed sequence and do not establish an optimal file-selection policy.}
 \label{fig:budget}
-\end{figure}
+\end{figure*}
 
 \subsection{Diagnostics by file stratum, station, and time block}
-The further decompositions in Fig.~\ref{fig:diagnostics} use all 1,024 evaluation rows. No overlap was the largest category in each sector--platform--pass stratum, ranging from 72 of 128 rows (56.25\%) in both Atlantic MetOp-B strata to 84 of 128 (65.63\%) in the Atlantic MetOp-C descending and Gulf MetOp-B ascending strata. Atlantic-sector files contributed 89 valid opportunities and Gulf-sector files contributed 61.
+The further decompositions in Supplementary Fig.~S1 use all 1,024 evaluation rows. No overlap was the largest category in each sector--platform--pass stratum, ranging from 72 of 128 rows (56.25\%) in both Atlantic MetOp-B strata to 84 of 128 (65.63\%) in the Atlantic MetOp-C descending and Gulf MetOp-B ascending strata. Atlantic-sector files contributed 89 valid opportunities and Gulf-sector files contributed 61.
 
 The station breakdown was more uneven. All 128 rows at 42056 ended in no overlap, as did 112 of 128 at 41047. Invalid times were most frequent at 42036, with 50 of 128 rows. All rows in the block breakdown were grouped by source-file sensing time, because failed records lack a valid center-pixel block. Its denominators were consequently 184, 224, 176, 224, and 216, rather than equal-sized groups. These displays locate the recorded losses within the selected design; they do not separate station geography, orbit geometry, retrieval behavior, or archive state as explanations.
 
 
-\begin{figure*}[!t]
-\centering
-\includegraphics[width=\textwidth]{figures/figure5.pdf}
-\caption{Evaluation processing states by (a) sector--platform--pass stratum, (b) station, and (c) source-file sensing block. In (a), ec/gc denote the Atlantic/Gulf product sectors, B/C denote MetOp-B/MetOp-C, and AS/DS denote ascending/descending passes. Cells show counts and within-row percentages. Each row in (a) and (b) has 128 records; the block denominators in (c) differ. All records in panel (c) are grouped by file sensing time, because failed records lack a valid center-pixel time. These are descriptive processing categories, not causal diagnoses.}
-\label{fig:diagnostics}
-\end{figure*}
+
 
 \subsection{Closure, transfer accounting, and replay agreement}
 The final record contained 128 selected-source keys, 128 source-transfer keys, 1,536 station-extract keys, and 150 predictor-case keys: 1,942 in total. No expected final key was missing or duplicated. A further 253 nonfinal attempts remained in the lineage with valid parent chains.

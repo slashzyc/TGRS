@@ -34,3 +34,11 @@ These checks concern the revised presentation and reported values. The original 
 - Corrected abstract and figure-caption self-containment, author-note styling, and overbroad outcome-access wording.
 - Added a source-linked note distinguishing station 42056's original Gulf selection label from its NDBC Yucatan Basin metadata, without changing station membership or counts.
 - Recompiled and checked the 10-page main manuscript and 4-page supplement. Scientific readiness is not certified; see `docs/submission_audit_2026-11-17.md`.
+
+## v5: geographic context, marginal-yield display, and scoped acknowledgment
+
+- Added a 12-station map with a cited, offline Natural Earth 1:50m land subset.
+- Expanded the acquisition plot to include four descriptive marginal-yield ratios; transferred the detailed processing diagnostic to Supplementary Figure S1.
+- Reduced repeated discussion by approximately 500 words and clarified the protocol-defined thresholds, contribution, and remaining implementation gaps.
+- Restored a truthful acknowledgment of specific AI-assisted preparation tasks and documented the distinct sources of counts, coordinates, land geometry, and arithmetic derivations.
+- Current pagination: 10 main pages, five supplement pages, 15 combined pages. All numeric and presentation checks passed; original scientific reproduction remains outstanding.
