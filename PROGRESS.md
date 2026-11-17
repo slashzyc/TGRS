@@ -27,3 +27,10 @@
 - Completed independent checks of the manuscript and delivery documentation. The machine-readable presentation report is `docs/presentation_check.json`.
 
 These checks concern the revised presentation and reported values. The original scientific experiment and replay were not rerun.
+
+## v4: author-requested acknowledgment removal and submission audit
+
+- Removed the manuscript acknowledgment on 17 November 2026 at the author's request. The disclosure-policy issue remains explicitly unresolved in the audit, rather than being counted as a presentation failure or silently certified as compliant.
+- Corrected abstract and figure-caption self-containment, author-note styling, and overbroad outcome-access wording.
+- Added a source-linked note distinguishing station 42056's original Gulf selection label from its NDBC Yucatan Basin metadata, without changing station membership or counts.
+- Recompiled and checked the 10-page main manuscript and 4-page supplement. Scientific readiness is not certified; see `docs/submission_audit_2026-11-17.md`.

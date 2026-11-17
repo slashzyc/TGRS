@@ -15,6 +15,7 @@ This repository contains the manuscript prepared for **IEEE Transactions on Geos
 - [Main manuscript in IEEE journal format](deliverables/TGRS_Manuscript.pdf)
 - [Supplementary material](deliverables/TGRS_Supplement.pdf)
 - [Revision notes](docs/revision_notes.md)
+- [Submission audit, 17 November 2026](docs/submission_audit_2026-11-17.md)
 
 ## What the study reports
 
@@ -61,7 +62,7 @@ The numeric checks verify internal consistency of the **reported** display value
 
 ## Author review and declarations
 
-Author order and shared second authorship follow the supplied instructions. The corresponding author’s affiliation and public professional email were checked against [Wenzhou-Kean University](https://csmt.wku.edu.cn/en/node/2000). The manuscript includes an acknowledgment describing the actual ChatGPT assistance used in this revision. Funding, competing interests, individual contribution roles, and approvals have not been invented; the authors must supply any applicable information before submission.
+Author order and shared second authorship follow the supplied instructions. The corresponding author’s affiliation and public professional email were checked against [Wenzhou-Kean University](https://csmt.wku.edu.cn/en/node/2000). At the author's request, the current manuscript omits the earlier AI-assistance acknowledgment. Compliance with IEEE's disclosure policy has therefore not been cleared for this edition; see the [submission audit](docs/submission_audit_2026-11-17.md). Funding, competing interests, individual contribution roles, and approvals have not been invented; the authors must supply any applicable information before submission.
 
 See [TGRS policy notes](docs/tgrs_policy_notes.md), [reference verification](docs/reference_verification.md), and [editorial tools](docs/editorial_tools.md).
 

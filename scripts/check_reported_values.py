@@ -108,6 +108,7 @@ def main():
     require(150<=abstract_words<=250,'Abstract outside 150–250-word range')
 
     pdf_reports=[]
+    ai_disclosure_present=False
     for file in [ROOT/'deliverables/TGRS_Manuscript.pdf',ROOT/'deliverables/TGRS_Supplement.pdf']:
         doc=fitz.open(file)
         extracted=' '.join(' '.join(p.get_text().split()) for p in doc)
@@ -125,7 +126,7 @@ def main():
             embedded=bool(flags) and all(f[0]=='yes' for f in flags)
             require(embedded,f'Unembedded fonts in {file.name}')
         if file.name=='TGRS_Manuscript.pdf':
-            require('ChatGPT (OpenAI)' in extracted,'AI-assistance disclosure missing')
+            ai_disclosure_present='ChatGPT (OpenAI)' in extracted
             require('tguancha@kean.edu' in extracted,'Corresponding author email missing')
             require('share second authorship' in extracted,'Shared-second-authorship note missing')
         pdf_reports.append({'file':file.name,'pages':len(doc),'all_fonts_embedded':embedded})
@@ -138,6 +139,11 @@ def main():
         'final_acquisition_bytes':9418446350,'remaining_budget_bytes':581553650,
         'final_keys':1942,'diagnostic_count_cells_checked':84,
         'references':len(bib),'abstract_words':abstract_words,'pdfs':pdf_reports,
+        'ai_assistance_disclosure_in_manuscript':ai_disclosure_present,
+        'submission_policy_status':'not_cleared',
+        'policy_note':('Presentation checks do not certify submission readiness. '
+                       'See docs/submission_audit_2026-11-17.md for the AI-disclosure policy '
+                       'review and unresolved scientific evidence requirements.'),
     }
     (ROOT/'docs/presentation_check.json').write_text(json.dumps(report,indent=2)+'\n')
     print(json.dumps(report,indent=2))

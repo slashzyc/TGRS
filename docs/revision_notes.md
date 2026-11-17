@@ -1,13 +1,13 @@
 # Revision notes
 
-Revision date: 16 November 2026 (America/New_York).
+Initial revision: 16 November 2026; follow-up audit: 17 November 2026 (America/New_York).
 
 ## Changes completed
 
 1. Rebuilt the supplied 20-page single-column anonymous PDF as an IEEE journal manuscript with a separate supplement and a combined reading copy.
 2. Shortened the title and rewrote the prose to reduce repetition, administrative jargon, and formulaic transitions. The study remains an exploratory negative readiness audit; no wind-performance result was introduced.
 3. Added Yichen Zhu, Mutong Li, Yongzhi Li, and Guanchao Tong in the requested order. Mutong Li and Yongzhi Li share second authorship; Guanchao Tong is the corresponding author. The first three authors have the supplied Wenzhou-Kean affiliation, and the corresponding author’s college, postcode, and email match the official university page.
-4. Added a transparent acknowledgment covering ChatGPT-assisted language revision, organization, LaTeX preparation, and plotting code. No unobserved author approval or absence of prior AI use is asserted.
+4. The initial revision added an acknowledgment covering ChatGPT-assisted language revision, organization, LaTeX preparation, and plotting code. At the author's request, the acknowledgment was removed from the current manuscript on 17 November. This does not establish compliance with IEEE's disclosure policy; see the submission audit. No unobserved author approval or absence of prior AI use is asserted.
 5. Rebuilt all five displays as vector figures using values already reported in the source PDF. The original images are retained for traceability. Figure 3 uses grouped horizontal bars to make small counts legible; no counts changed.
 6. Converted reference entries to IEEE style and ordered them by first citation. The original 17 entries were retained; one verified 2023 source on leakage was added for context. Historical sources retain their actual years and are not presented as current performance baselines.
 7. Replaced the incorrect provenance-section reference with a live LaTeX reference. Removed the unsupported reference to a missing execution-lineage table; the supplement preserves only the events actually described in the supplied document.
@@ -35,3 +35,11 @@ This was a manuscript-revision task, not a new experimental campaign. The releas
 ## Validation scope
 
 Presentation checks cover the transcribed numerical arrays and their totals, acquisition arithmetic, figure dimensions, citation keys and order, figure references, author names, disclosure presence, PDF font embedding, and visual layout. The check report is in `docs/presentation_check.json`. These checks are separate from the original study’s tests.
+
+## Follow-up audit on 17 November 2026
+
+- Removed the AI-assistance acknowledgment from the manuscript as requested, while recording the unresolved policy issue separately from presentation checks.
+- Expanded NOAA in the abstract, explained Figure 5 stratum codes, and italicized the shared-second-authorship note.
+- Qualified outcome-access claims to the recorded workflow rather than asserting that no external person or process accessed outcomes.
+- Preserved station 42056's original selection label and all numerical results; added the NDBC Yucatan Basin metadata and the unresolved product-footprint mapping issue in the supplement and limitations.
+- No original scientific experiment, acquisition, or replay was rerun. See `submission_audit_2026-11-17.md` for the remaining evidence and author-metadata requirements.

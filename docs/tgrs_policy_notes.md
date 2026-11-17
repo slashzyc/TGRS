@@ -64,7 +64,7 @@ The TGRS author instructions call for ORCID identifiers for the authors. Only ge
 
 ## AI-assisted revision disclosure
 
-The [IEEE journal submission and peer-review policy](https://journals.ieeeauthorcenter.ieee.org/become-an-ieee-journal-author/publishing-ethics/guidelines-and-policies/submission-and-peer-review-policies/) says that AI-generated content must be disclosed in the **Acknowledgments** section, identifying the system, the affected article sections, and the extent of use. Editing and grammar enhancement are generally outside the mandatory scope, but disclosure is recommended. The user explicitly requested a disclosure, and this revision includes one.
+The [IEEE journal submission and peer-review policy](https://journals.ieeeauthorcenter.ieee.org/become-an-ieee-journal-author/publishing-ethics/guidelines-and-policies/submission-and-peer-review-policies/) says that AI-generated content must be disclosed in the **Acknowledgments** section, identifying the system, the affected article sections, and the extent of use. Editing and grammar enhancement are generally outside the mandatory scope, but disclosure is recommended. The first revision included a disclosure. The author requested its removal on 17 November 2026, and the current manuscript omits it. Because the actual assistance included extensive rewriting and plotting-code generation, the editing/grammar exemption cannot safely be assumed; the current edition is not certified as complying with this policy.
 
 The policy also advises excluding references from ordinary AI grammar-editing passes. Here, reference changes are handled as a separate bibliographic check documented in [reference_verification.md](reference_verification.md), rather than unrestricted stylistic paraphrasing of titles or author names.
 
@@ -104,4 +104,4 @@ The present record does not assert any of these facts. Formatting, citation chec
 5. [IEEE: Ethical Requirements](https://journals.ieeeauthorcenter.ieee.org/become-an-ieee-journal-author/publishing-ethics/ethical-requirements/).
 6. [Guanchao Tong, Wenzhou-Kean University](https://csmt.wku.edu.cn/en/node/2000).
 
-All dates in this editorial access record refer to 16 November 2026 in America/New_York, not to the original study's documented retrieval dates.
+The initial editorial access record is dated 16 November 2026 in America/New_York. The IEEE AI policy and TGRS submission guidance were rechecked on 17 November 2026. These are editorial review dates, not the source study's retrieval dates.

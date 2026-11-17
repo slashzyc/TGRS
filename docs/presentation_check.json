@@ -24,7 +24,7 @@
   "final_keys": 1942,
   "diagnostic_count_cells_checked": 84,
   "references": 18,
-  "abstract_words": 234,
+  "abstract_words": 244,
   "pdfs": [
     {
       "file": "TGRS_Manuscript.pdf",
@@ -36,5 +36,8 @@
       "pages": 4,
       "all_fonts_embedded": true
     }
-  ]
+  ],
+  "ai_assistance_disclosure_in_manuscript": false,
+  "submission_policy_status": "not_cleared",
+  "policy_note": "Presentation checks do not certify submission readiness. See docs/submission_audit_2026-11-17.md for the AI-disclosure policy review and unresolved scientific evidence requirements."
 }
