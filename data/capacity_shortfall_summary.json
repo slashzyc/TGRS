@@ -1,0 +1,81 @@
+{
+  "scope": "Arithmetic lower bounds on the fixed reported counts; no new observations or acquisition forecast.",
+  "source_files": [
+    {
+      "path": "data/figure2_station_blocks.csv",
+      "sha256": "531976e05dbcafde7d10b74dd5ce7b0f9b5aa02f8fc8aa5fb071f519971e33a9"
+    },
+    {
+      "path": "data/figure1_flow_parameters.csv",
+      "sha256": "94e2c1ca7294c1152bd6380243a3b26dd2a2d207a763f9c36ed38fe19919fdfe"
+    }
+  ],
+  "population": "Eight evaluation stations across five valid center-pixel reporting blocks.",
+  "counting_unit": "Unique station-observation opportunities",
+  "cell_threshold": 8,
+  "total_threshold": 400,
+  "total_cells": 40,
+  "reported_opportunities": 150,
+  "zero_cells": 9,
+  "cells_below_threshold": 37,
+  "cells_reaching_threshold": 3,
+  "minimum_cell_gap_additions": 171,
+  "existing_surplus_above_cell_threshold": 1,
+  "total_after_minimal_cell_filling": 321,
+  "remaining_total_gap_after_cell_filling": 79,
+  "minimum_total_additions_for_both_thresholds": 250,
+  "station_deficits": [
+    {
+      "station": "41047",
+      "reported_opportunities": 1,
+      "positive_cell_deficit": 39,
+      "deficient_cells": 5
+    },
+    {
+      "station": "42001",
+      "reported_opportunities": 22,
+      "positive_cell_deficit": 18,
+      "deficient_cells": 5
+    },
+    {
+      "station": "42035",
+      "reported_opportunities": 29,
+      "positive_cell_deficit": 11,
+      "deficient_cells": 4
+    },
+    {
+      "station": "42036",
+      "reported_opportunities": 14,
+      "positive_cell_deficit": 26,
+      "deficient_cells": 5
+    },
+    {
+      "station": "42056",
+      "reported_opportunities": 0,
+      "positive_cell_deficit": 40,
+      "deficient_cells": 5
+    },
+    {
+      "station": "44008",
+      "reported_opportunities": 30,
+      "positive_cell_deficit": 10,
+      "deficient_cells": 4
+    },
+    {
+      "station": "44014",
+      "reported_opportunities": 19,
+      "positive_cell_deficit": 21,
+      "deficient_cells": 5
+    },
+    {
+      "station": "44020",
+      "reported_opportunities": 35,
+      "positive_cell_deficit": 6,
+      "deficient_cells": 4
+    }
+  ],
+  "formula": "d[s,b] = max(cell_threshold - N[s,b], 0); D[s] = sum_b d[s,b]",
+  "interpretation": "All existing opportunities are retained. At least 171 additions must fall in the 37 deficient cells in the required amounts; another 79 additions are needed for the overall total. This does not establish that such opportunities exist or can be acquired.",
+  "surplus_note": "One existing cell contains nine opportunities. Its surplus is retained but cannot cancel another cell's deficit, so minimal cell filling gives 321 rather than 320.",
+  "ai_assistance": "ChatGPT assisted figure design and plotting code; numerical inputs are transcribed source counts and explicitly stated arithmetic."
+}

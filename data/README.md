@@ -2,7 +2,7 @@
 
 The original `figure*.csv` files contain aggregate values explicitly printed in the supplied
 `manuscript(2).pdf`, its figures, and its budget/capacity table. `station_locations.csv`
-transcribes its reported coordinates. `acquisition_marginal_yield.csv` is an explicit arithmetic
+transcribes its reported coordinates. `capacity_cell_shortfalls.csv` and `capacity_shortfall_summary.json` record positive deficits derived from the same 40-cell matrix. `acquisition_marginal_yield.csv` is an explicit arithmetic
 derivation from the original budget table. The land subset has its own external provenance.
 These inputs support reproducible figure rendering. They are **not** independently
 reproduced experimental results, raw NOAA observations, station-file logs, or an
@@ -24,6 +24,8 @@ from unlabelled plotted positions or create new observations.
 | `figure5_terminal_counts.csv` | All 84 labelled terminal-state counts in the three original Figure 5 panels. `total` is the printed within-row denominator. Source-block grouping uses source-file sensing time and must not be equated with the reporting-block grouping in Figure 2. |
 | `figure5_display_percentages.csv` | All 84 percentage labels printed in original Figure 5, retained separately to check rounding and transcription. |
 | `station_locations.csv` | The 12 source-reported station coordinates, study roles and unchanged selection labels; used in current Figure 2. |
+| `capacity_cell_shortfalls.csv` | Forty source cells with their positive deficits to eight, retained excess, and threshold indicators; used in Figure 6. |
+| `capacity_shortfall_summary.json` | Source hashes and arithmetic summaries: 171 cell-gap additions, 321 after minimal cell filling, and 79 remaining to reach 400. These are conditional bounds, not acquisitions. |
 | `acquisition_marginal_yield.csv` | Four differences of consecutive acquisition totals, followed by additional opportunities / (additional bytes / 1e9); used in current Figure 5(b). |
 | `basemaps/natural_earth_50m_land_station_region.geojson` | An offline subset of the cited public-domain Natural Earth land dataset; geographic context only. |
 
@@ -52,6 +54,7 @@ The vector figures are generated with:
 python3 scripts/render_figures.py
 python3 scripts/render_station_map.py
 python3 scripts/render_acquisition_profile.py
+python3 scripts/render_capacity_shortfall.py
 ```
 
 This checks internal arithmetic and reproduces the revised visual presentation.

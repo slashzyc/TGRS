@@ -16,14 +16,14 @@ The current version restores the AI-assistance acknowledgment following the auth
 | Abstract | One paragraph, 243 words; no citation, footnote, or displayed equation; NOAA expanded |
 | Index Terms | Five entries in alphabetical order |
 | Authors | Four names, affiliations, shared-second-authorship note, corresponding author and email |
-| Figures | Five main figures and Supplementary Figure S1, all vector; new station map and marginal-yield panel included |
+| Figures | Six main figures and Supplementary Figure S1, all vector; station map, marginal-yield panel, and capacity-shortfall panels included |
 | References | 19 numbered entries in first-citation order, including the Natural Earth basemap; no unresolved citation keys |
 | PDF integrity | Embedded fonts, no unresolved references, no overfull text lines or detected clipping |
-| Reported values | Matrix, terminal-state marginals, 84 diagnostic counts, percentages, transfer arithmetic, 12 mapped coordinates and four marginal-yield calculations reconcile |
+| Reported values | Matrix, terminal-state marginals, 84 diagnostic counts, percentages, transfer arithmetic, 12 mapped coordinates, four marginal-yield calculations, and all 40 cell-deficit calculations reconcile |
 
 The machine-readable numerical and PDF results are in [presentation_check.json](presentation_check.json). These are checks of presentation and transcription, not of the original experimental inputs. Bibliographic metadata and numbering checks are not a claim that all scientific propositions in all cited full texts have undergone independent human verification.
 
-The main template matches the [TGRS author guidance](https://www.grss-ieee.org/publications/author-resources/tgrs-information-for-authors/). TGRS uses single-anonymous review, so names may remain. Ten pages is a 2026 overlength-charge threshold, not a hard manuscript maximum. Final typeset pagination may differ. The [IEEE style manual](https://journals.ieeeauthorcenter.ieee.org/wp-content/uploads/sites/7/IEEE-Editorial-Style-Manual-for-Authors.pdf) informs the abstract, keywords, and author-footnote checks.
+The main template matches the [TGRS author guidance](https://www.grss-ieee.org/publications/author-resources/tgrs-information-for-authors/). TGRS uses single-anonymous review, so names may remain. Ten pages is a 2026 overlength-charge threshold, not a hard manuscript maximum. The author separately requested a ten-page maximum for this revision, and the build now enforces that constraint. Final typeset pagination may differ. The [IEEE style manual](https://journals.ieeeauthorcenter.ieee.org/wp-content/uploads/sites/7/IEEE-Editorial-Style-Manual-for-Authors.pdf) informs the abstract, keywords, and author-footnote checks.
 
 For submission, use the main PDF and [separate supplementary file](https://journals.ieeeauthorcenter.ieee.org/create-your-ieee-journal-article/prepare-supplementary-materials/). The combined reading copy is provided for convenience.
 
@@ -69,6 +69,6 @@ The 211 evaluation records classified as time-invalid require representative und
 
 ## Changes in this follow-up
 
-The scoped acknowledgment was restored; a station map and marginal-yield panel were added; the detailed diagnostic figure was moved to Supplementary Figure S1; and about 500 words of repetitive discussion were removed. The contribution and threshold claims were tightened, NOAA was expanded, figure codes were defined, author-note styling was corrected, and outcome-access wording was limited to the recorded workflow. All original numerical results, station assignments, and capacity/replay decisions remain unchanged. No scientific acquisition or experiment was run.
+The scoped acknowledgment was restored; a station map and marginal-yield panel were added; the detailed diagnostic figure was moved to Supplementary Figure S1; and repetitive discussion was removed. The subsequent revision added the two-panel capacity-shortfall figure, moved long stored labels to Supplementary Table S3, fixed URL/identifier spacing, and removed about 530 further words from the background, discussion, and limitations while retaining the ten-page main manuscript. The contribution and threshold claims were tightened, NOAA was expanded, figure codes were defined, author-note styling was corrected, and outcome-access wording was limited to the recorded workflow. All original numerical results, station assignments, and capacity/replay decisions remain unchanged. No scientific acquisition or experiment was run.
 
 **Recommended disposition:** retain this as a revised pre-submission draft. Provide the original evidence, verify the station/product mapping and selection implementation, and have the human authors assess the methodological contribution before treating it as ready for TGRS review.

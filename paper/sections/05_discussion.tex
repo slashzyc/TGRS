@@ -2,21 +2,30 @@
 \label{sec:discussion}
 
 \subsection{Availability did not provide sufficient support for this benchmark}
-Official files were available and 128 sources were processed, yet the selected design provided only 150 of the required 400 opportunities, with most station--block cells below their local threshold. The performance experiment could not proceed under its declared rules.
+The selected 128-file design yielded 150 of the required 400 opportunities and left most station--block cells below eight, preventing the planned performance experiment.
 
-This case adds a design-specific question to analysis-ready data and quality-assurance concerns: how much eligible support remains after fixing the population, matching criteria, and reporting cells? Consistent processing and traceable quality information help make data usable \cite{dwyer2018,qa4eo2010}, while coastal ASCAT validation establishes retrieval properties \cite{verhoef2012,lindsley2016,soisuvarn2023}. Neither determines the opportunity counts for this selection. Those counts do not establish suitability for other applications.
+Consistent processing and traceable quality information support data usability \cite{dwyer2018,qa4eo2010}, while coastal ASCAT validation characterizes retrieval properties \cite{verhoef2012,lindsley2016,soisuvarn2023}. Eligible support must still be counted for the specified population, matching criteria, and reporting cells. The present counts apply only to that design.
 
 \subsection{The stopping decision and its replay answer different questions}
-The capacity gate stopped the workflow when support requirements remained unmet. Replacing stations, extending the interval, relaxing a criterion, or selecting individual alternate files could define another experiment, but would not demonstrate that the original design had passed.
+Changing stations, extending the interval, relaxing eligibility, or selecting alternate files individually would define a new experiment; none would demonstrate that the original design passed its capacity rule.
 
-The reported replay reconciled identifiers, deduplicated counts, final states, prescribed round completion, and transfer accounting within the original implementation. It made the recorded failure inspectable without independently validating the extraction software or identifying the physical cause of missing observations. A capacity verdict concerns the declared sampling rule; an integrity verdict concerns consistency of the supporting record.
+The reported replay reconciled identifiers, deduplicated counts, final states, complete rounds, and transfers within the original implementation. It checked consistency of the failure record without independently validating extraction software or identifying causes of missing observations.
 
 \subsection{Thresholds should follow the intended analysis}
-The two conditions constrain different aspects of support: a total of 400 may be concentrated in a few cells, whereas eight in each of 40 cells implies only 320 overall. Neither requirement alone guarantees the other. Their conjunction tests both aggregate capacity and local representation.
+A total of 400 may be concentrated in a few cells, whereas eight in each of 40 cells implies only 320 overall. Their conjunction therefore tests aggregate capacity and local representation.
+
+The positive cell deficits sum to 171 opportunities (Fig.~\ref{fig:shortfall}). Filling them exactly would raise the retained total from 150 to 321, leaving 79 further opportunities needed to reach 400. The intermediate total exceeds 320 because one cell already contains nine. These are allocation-dependent arithmetic bounds; they do not predict availability or transfer cost.
+
+\begin{figure*}[!t]
+\centering
+\includegraphics[width=\textwidth]{figures/capacity_shortfall.pdf}
+\caption{Arithmetic shortfalls under the fixed capacity rule. (a) Each station's positive cell deficits, $D_s=\sum_b\max(8-N_{s,b},0)$, computed from the reported matrix. (b) The retained 150 opportunities plus 171 additions allocated to deficient cells would total 321, leaving 79 further additions to reach 400. Derived additions are arithmetic requirements, not observed gains or acquisition forecasts.}
+\label{fig:shortfall}
+\end{figure*}
 
 The 400-total and eight-per-cell requirements are protocol-defined rules, not validated guarantees of statistical sufficiency. They permit 20\% overall and 25\% cell-level attrition before the downstream minima of 320 and six are crossed. That arithmetic does not justify either set of minima through power or target precision.
 
-A successor study should specify its estimand, independent analysis unit, relevant heterogeneity, target precision or power, and expected retention. The population, local support requirements, and acquisition budget can then be chosen together. The present result establishes failure of the configured rule; a scientifically justified threshold would make a future readiness decision more informative.
+A successor study should jointly specify its estimand, independent analysis unit, heterogeneity, target precision or power, expected retention, and acquisition budget. These choices should determine scientifically justified local and aggregate thresholds.
 
 \subsection{What can and cannot be learned from sensitivity calculations}
 Only 35 evaluation rows failed the two-candidate rule. Even if all became valid with every other requirement unchanged, the total could be no greater than 185, still below 400. This arithmetic ceiling is not a completed one-candidate experiment; the actual gain would require new selection semantics and reprocessing.

@@ -28,9 +28,9 @@ Included:
 
 - Editable LaTeX manuscript and supplemental text.
 - IEEEtran journal class, unmodified, with its original license notice.
-- Six displayed vector figures: five in the main text and one in the supplement, plus the earlier figure versions and original extracted images.
-- A station map with a bundled Natural Earth land subset and a cost plot with a descriptive marginal-yield panel.
-- CSV transcriptions of source counts and coordinates, plus a separately labeled arithmetic derivation of marginal yields.
+- Seven displayed vector figures: six in the main text and one in the supplement, plus the earlier figure versions and original extracted images.
+- A station map with a bundled Natural Earth land subset, a cost plot with a descriptive marginal-yield panel, and a two-panel display of local and overall capacity shortfalls.
+- CSV transcriptions of source counts and coordinates, plus separately labeled arithmetic derivations of marginal yields and positive cell deficits.
 - Plotting, document-building, and presentation-consistency utilities.
 - Reference-verification, policy, provenance, and revision records.
 
@@ -60,6 +60,7 @@ The committed vector figures are sufficient for compiling the manuscript. To reg
 python scripts/render_figures.py
 python scripts/render_station_map.py
 python scripts/render_acquisition_profile.py
+python scripts/render_capacity_shortfall.py
 ```
 
 The numeric checks verify internal consistency of the **reported** display values. They do not validate the original observation acquisition or reproduce its outcome-access audit.

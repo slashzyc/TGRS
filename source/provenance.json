@@ -11,9 +11,10 @@
   "last_editorial_revision_date_local": "2026-11-17",
   "submission_readiness_certified": false,
   "ai_assistance_disclosed": true,
-  "current_main_figures": 5,
+  "current_main_figures": 6,
   "current_supplementary_figures": 1,
   "new_scientific_observations_generated": false,
-  "new_descriptive_derivation": "Four alternate-round opportunity increments divided by transfer increments in decimal GB",
-  "external_context_dataset": "Natural Earth 1:50m land, version 4.0.0; see data/basemaps/natural_earth_provenance.json"
+  "new_descriptive_derivation": "Four alternate-round opportunity increments per transfer increment in decimal GB; and allocation-dependent positive cell deficits from the reported 8-by-5 matrix (171 to meet all cell floors, 321 retained total after minimal cell filling, 79 remaining to reach 400).",
+  "external_context_dataset": "Natural Earth 1:50m land, version 4.0.0; see data/basemaps/natural_earth_provenance.json",
+  "typography_revision": "Long exact stored labels consolidated in Supplementary Table S3; natural-language definitions retained in the main text; long URLs use breakable typesetting."
 }

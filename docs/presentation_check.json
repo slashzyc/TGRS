@@ -37,6 +37,7 @@
       "all_fonts_embedded": true
     }
   ],
+  "author_requested_main_page_limit": 10,
   "mapped_stations": 12,
   "marginal_opportunities_per_decimal_gb": [
     18.01759143936664,
@@ -44,6 +45,20 @@
     18.633669608901076,
     8.093598412364916
   ],
+  "capacity_shortfall_arithmetic": {
+    "reported_opportunities": 150,
+    "total_cells": 40,
+    "zero_cells": 9,
+    "cell_threshold": 8,
+    "total_threshold": 400,
+    "cells_below_threshold": 37,
+    "cells_reaching_threshold": 3,
+    "minimum_cell_gap_additions": 171,
+    "existing_surplus_above_cell_threshold": 1,
+    "total_after_minimal_cell_filling": 321,
+    "remaining_total_gap_after_cell_filling": 79,
+    "minimum_total_additions_for_both_thresholds": 250
+  },
   "figures": [
     {
       "file": "paper/figures/figure1.pdf",
@@ -67,6 +82,11 @@
     },
     {
       "file": "paper/figures/acquisition_profile.pdf",
+      "document": "paper",
+      "vector": true
+    },
+    {
+      "file": "paper/figures/capacity_shortfall.pdf",
       "document": "paper",
       "vector": true
     },

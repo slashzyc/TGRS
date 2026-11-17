@@ -53,6 +53,39 @@ def main():
     require(sum(values)==150 and min(values)==0 and sum(v>=8 for v in values)==3,
             'Capacity summary differs from the source manuscript')
 
+    shortfall_rows=rows('capacity_cell_shortfalls.csv')
+    shortfall=json.loads((ROOT/'data/capacity_shortfall_summary.json').read_text())
+    cell_keys={(r['station'],r['reporting_block']) for r in shortfall_rows}
+    expected_keys={(station,f'Block_{block:02d}') for station in expected for block in range(1,6)}
+    require(len(shortfall_rows)==40 and cell_keys==expected_keys,
+            'Cell-shortfall table must contain each source cell exactly once')
+    for row in shortfall_rows:
+        block=int(row['reporting_block'].split('_')[1])
+        count=expected[row['station']][block-1]
+        require(int(row['reported_opportunities'])==count and int(row['cell_threshold'])==8,
+                'Shortfall display source count or threshold changed')
+        require(int(row['positive_cell_deficit'])==max(8-count,0),
+                'Incorrect positive cell deficit')
+        require(int(row['surplus_above_cell_threshold'])==max(count-8,0),
+                'Incorrect retained cell surplus')
+        require(int(row['reaches_cell_threshold'])==int(count>=8),
+                'Incorrect cell-threshold indicator')
+    expected_shortfall={'reported_opportunities':150,'total_cells':40,'zero_cells':9,
+                        'cell_threshold':8,'total_threshold':400,
+                        'cells_below_threshold':37,'cells_reaching_threshold':3,
+                        'minimum_cell_gap_additions':171,'existing_surplus_above_cell_threshold':1,
+                        'total_after_minimal_cell_filling':321,
+                        'remaining_total_gap_after_cell_filling':79,
+                        'minimum_total_additions_for_both_thresholds':250}
+    require(all(shortfall[k]==value for k,value in expected_shortfall.items()),
+            'Capacity-shortfall summary does not reconcile')
+    require(150+sum(int(r['positive_cell_deficit']) for r in shortfall_rows)
+            ==40*8+sum(int(r['surplus_above_cell_threshold']) for r in shortfall_rows)==321,
+            'Cell-gap conservation identity failed')
+    require({r['station']:r['positive_cell_deficit'] for r in shortfall['station_deficits']}
+            =={station:sum(max(8-n,0) for n in counts) for station,counts in expected.items()},
+            'Plotted station deficits differ from cell deficits')
+
     terminals=rows('figure3_terminal_counts.csv')
     expected_roles={'Evaluation':[150,35,628,211], 'Development':[68,30,271,143]}
     for row in terminals:
@@ -169,6 +202,7 @@ def main():
             embedded=bool(flags) and all(f[0]=='yes' for f in flags)
             require(embedded,f'Unembedded fonts in {file.name}')
         if file.name=='TGRS_Manuscript.pdf':
+            require(len(doc)<=10,'Author-requested ten-page main-manuscript limit exceeded')
             ai_disclosure_present='ChatGPT (OpenAI)' in extracted
             require(ai_disclosure_present,'The requested AI-assistance acknowledgment is missing')
             require('tguancha@kean.edu' in extracted,'Corresponding author email missing')
@@ -183,7 +217,9 @@ def main():
         'final_acquisition_bytes':9418446350,'remaining_budget_bytes':581553650,
         'final_keys':1942,'diagnostic_count_cells_checked':84,
         'references':len(bib),'abstract_words':abstract_words,'pdfs':pdf_reports,
+        'author_requested_main_page_limit':10,
         'mapped_stations':len(stations),'marginal_opportunities_per_decimal_gb':marginal_values,
+        'capacity_shortfall_arithmetic':expected_shortfall,
         'figures':figure_reports,
         'ai_assistance_disclosure_in_manuscript':ai_disclosure_present,
         'ai_disclosure_status':'tool, affected preparation tasks, and evidence boundaries stated',

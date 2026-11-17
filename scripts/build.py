@@ -26,7 +26,8 @@ def main() -> None:
             raise SystemExit('Unexpected TeX environment settings')
         env.update(values)
     if args.regenerate_figures:
-        for script in ['render_figures.py', 'render_station_map.py', 'render_acquisition_profile.py']:
+        for script in ['render_figures.py', 'render_station_map.py', 'render_acquisition_profile.py',
+                       'render_capacity_shortfall.py']:
             subprocess.run([sys.executable, str(ROOT / 'scripts' / script)], check=True)
     for folder, entry in [('paper', 'main.tex'), ('supplement', 'supplement.tex')]:
         for _ in range(3):

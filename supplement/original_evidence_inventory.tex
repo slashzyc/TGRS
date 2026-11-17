@@ -36,7 +36,7 @@ Station & Source region label & Role & Latitude ($^\circ$N) & Longitude ($^\circ
 
 The source protocol assigned station 42056 to its Gulf selection stratum. NDBC identifies the station as Yucatan Basin at 19.820$^\circ$N, 84.980$^\circ$W.\footnote{NDBC station metadata, accessed 17 November 2026: \url{https://www.ndbc.noaa.gov/station_page.php?station=42056}. This metadata check is not a reconstruction of the historical deployment record.} The retained selection label does not establish coverage by the \texttt{gc} product sector. The source file footprints and station-to-sector mapping must be checked before interpreting its 128 no-overlap records.
 
-The reported study interval was [2026-06-17 00:00 UTC, 2026-11-04 00:00 UTC). Its five 28-day blocks began on 17 June, 15 July, 12 August, 9 September, and 7 October 2026. The official satellite origin was \texttt{https://manati.star.nesdis.noaa.gov/UHR\_COASTAL/}. The listing inventory comprised 1,232 requests collected on 4 November 2026 between 06:39:16 and 07:22:46 UTC. Within the study interval, 141 of the 560 date-prefix requests carried the joint empty-or-not-backfilled label. The narrower denominator and the ambiguity of that label are preserved.
+The reported study interval was [2026-06-17 00:00 UTC, 2026-11-04 00:00 UTC). Its five 28-day blocks began on 17 June, 15 July, 12 August, 9 September, and 7 October 2026. The official satellite origin was \url{https://manati.star.nesdis.noaa.gov/UHR_COASTAL/}. The listing inventory comprised 1,232 requests collected on 4 November 2026 between 06:39:16 and 07:22:46 UTC. Within the study interval, 141 of the 560 date-prefix requests carried the joint empty-or-not-backfilled label. The narrower denominator and the ambiguity of that label are preserved.
 
 \subsection{Exact acquisition-stage totals}
 Table~\ref{tab:supp-activation} preserves the byte totals underlying the budget figure. \emph{New science bytes} include the reported probe bytes. The primary set contained 96 files, and each subsequent stage added one complete eight-file round. These are observations along the prescribed sequence, not optimized or counterfactual yields.
@@ -192,3 +192,25 @@ Only the entrypoint failure and the successful replay are described in the avail
 The source study reports two unresolved defects. A nested Parquet receipt retains a deleted staging locator even though the canonical file passes its content and schema checks. Successful transfers also lack separate per-file probe receipts: 125 \texttt{probe\_ok} nodes and the $125\times8$-byte aggregate reconcile, but the retained records cannot independently reproduce every request header and response. A locator-resolution map and complete receipts for future probes were proposed, not reported as completed repairs.
 
 The source study states that predictor extracts, manifests, per-file receipts, source URLs and digests, transfer records, and the evaluation Parquet remained in its research pack after deletion of the newly downloaded raw files. It also states that the pack was repository-local and not yet externally reproducible. No durable deposit, public research-pack URL, redistribution license, or independently implemented replay is included in this release. Those omissions remain open; the inventory and reformatted manuscript do not resolve them.
+
+
+\subsection{Stored state labels}
+Table~\ref{tab:stored-labels} maps the reported processing and listing labels to their meanings.
+
+\begin{table}[!htbp]
+\caption{Stored processing and listing labels}
+\label{tab:stored-labels}
+\centering\small
+\begin{tabularx}{\linewidth}{@{}p{0.52\linewidth}Y@{}}
+\toprule
+Stored label & Meaning in the reported workflow \\
+\midrule
+\path{extract_valid} & Extract satisfies the predictor eligibility rules. \\
+\path{fewer_than_two_valid_candidates} & Fewer than two valid wind-ambiguity candidates. \\
+\path{no_overlap} & No spatial match under the specified rule. \\
+\path{time_invalid} & Invalid time under the specified processing rules. \\
+\path{public_endpoint_empty_or_not_backfilled} & Combined listing state; it does not resolve observation absence, listing state, or backfill. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+The companion CSV column \path{fewer_than_2_candidates} abbreviates the second processing label. These state names do not establish physical causes for missing opportunities.

@@ -11,7 +11,7 @@ Table~\ref{tab:gate-results} distinguishes this capacity decision, \texttt{G0-v4
 \label{tab:gate-results}
 \centering
 \small
-\begin{tabularx}{\textwidth}{@{}p{0.14\textwidth}p{0.23\textwidth}p{0.24\textwidth}X@{}}
+\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{0.14\textwidth}p{0.23\textwidth}p{0.24\textwidth}X@{}}
 \toprule
 Decision & Observed result & Requirement & Consequence \\
 \midrule
@@ -27,7 +27,7 @@ The capacity failure was reproduced; no performance evaluation was authorized. \
 \end{tabularx}
 \end{table*}
 
-Figure~\ref{fig:capacity} shows the complete matrix, including zero-count cells. Station totals ranged from zero at 42056 to 35 at 44020; station 41047 contributed one opportunity. The remaining totals were 22 at 42001, 29 at 42035, 14 at 42036, 30 at 44008, and 19 at 44014. The three qualifying cells were 42035 in Block~4 and 44008 in Block~1, each with eight opportunities, and 44020 in Block~4, with nine. Thus, the shortfall was not confined to the overall total: most of the intended station--time comparisons also lacked the required support.
+Figure~\ref{fig:capacity} shows the complete matrix. Station totals ranged from zero at 42056 to 35 at 44020; 41047 contributed one opportunity. Only 42035/Block~4, 44008/Block~1, and 44020/Block~4 met the cell threshold. The shortfall therefore affected most intended station--time comparisons as well as the overall total.
 
 
 \begin{figure}[!t]
@@ -38,9 +38,9 @@ Figure~\ref{fig:capacity} shows the complete matrix, including zero-count cells.
 \end{figure}
 
 \subsection{Terminal states and the distribution of the shortfall}
-Every one of the 1,536 station--file combinations received a final processing state. Of the 1,024 evaluation rows, 150 were valid extracts, 35 failed the two-candidate requirement, 628 had no spatial overlap, and 211 had an invalid time. The corresponding development counts were 68, 30, 271, and 143, totaling 512. Across both roles, the four counts were 218, 65, 899, and 354. Table~\ref{tab:accounting} summarizes these totals and the principal integrity checks; Fig.~\ref{fig:terminals} displays the role-specific composition.
+All 1,536 station--file combinations received a final processing state (Table~\ref{tab:accounting}). No spatial overlap was the largest category in both roles: 628 of 1,024 evaluation rows and 271 of 512 development rows. Among evaluation rows, 211 had invalid time and 35 failed the two-candidate requirement. Figure~\ref{fig:terminals} compares the role-specific counts.
 
-The stored labels are \texttt{extract\_valid}, \texttt{fewer\_than\_two\_valid\_candidates}, \texttt{no\_overlap}, and \texttt{time\_invalid}. They identify the condition at which processing ended. A valid extract satisfies the predictor protocol but is not a claim of accurate wind retrieval; similarly, a failed extract does not by itself identify a physical cause.
+These processing states identify where a record stopped in the workflow. A valid extract satisfies the predictor protocol but does not establish accurate wind retrieval; an unsuccessful extract does not by itself identify a physical cause.
 
 \begin{table*}[t]
 \caption{Terminal-state counts and principal record checks. Terminal counts use station--file rows, whereas the case manifest uses unique station--observation opportunities.}

@@ -42,3 +42,12 @@ These checks concern the revised presentation and reported values. The original 
 - Reduced repeated discussion by approximately 500 words and clarified the protocol-defined thresholds, contribution, and remaining implementation gaps.
 - Restored a truthful acknowledgment of specific AI-assisted preparation tasks and documented the distinct sources of counts, coordinates, land geometry, and arithmetic derivations.
 - Current pagination: 10 main pages, five supplement pages, 15 combined pages. All numeric and presentation checks passed; original scientific reproduction remains outstanding.
+
+
+## v6: compact prose, repaired typography, and capacity shortfalls
+
+- Removed long, nonbreaking stored labels from narrow main-text columns; preserved exact strings in Supplementary Table S3 and retained run/package identifiers in the original-evidence inventory.
+- Added Figure 6, derived from the 40 reported station-block counts: cell gaps sum to 171, minimal cell filling retains a total of 321, and the remaining total gap is 79.
+- Reduced generic and repeated context while retaining specific coastal ASCAT and contemporary workflow/asset-provenance developments. No scientific observations or performance experiments were added.
+- Updated scoped AI assistance, source/derived data documentation, and numeric consistency checks.
+- Final manuscript: ten pages including references and acknowledgment, six main figures; supplement: five pages with Figure S1 and Table S3; combined copy: 15 pages. The ten-page author constraint is now a checked build gate.

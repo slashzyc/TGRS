@@ -68,7 +68,7 @@ The [IEEE journal policy](https://journals.ieeeauthorcenter.ieee.org/become-an-i
 
 The author requested a scoped disclosure after an intermediate version omitted it. The current Acknowledgment identifies ChatGPT (OpenAI), language and organizational revision in the Abstract, Sections I–VIII, captions and supplementary text, LaTeX, figure layouts, and Python plotting/editorial-checking code. “Specific parts” refers to these preparation tasks, not to an unsupported claim that only one or two figures used AI. Earlier figure redrawing also involved AI-assisted code.
 
-The acknowledgment identifies the supplied manuscript as the source of scientific counts, station coordinates, and prior audit outcomes; Natural Earth supplies the basemap. Marginal yield is an explicit calculation from existing counts and bytes. No new observations were generated and the original acquisition/replay experiments were not run in this revision. No completed human-author verification or approval is asserted.
+The acknowledgment identifies the supplied manuscript as the source of scientific counts, station coordinates, and prior audit outcomes; Natural Earth supplies the basemap. Marginal yield is calculated from existing counts and bytes; the capacity-shortfall panels are arithmetic on the reported station–block matrix. No new observations were generated and the original acquisition/replay experiments were not run in this revision. No completed human-author verification or approval is asserted.
 
 Reference metadata were checked separately from prose editing; see [reference_verification.md](reference_verification.md). An AI-text-detector score is not part of this workflow or a submission-readiness criterion.
 

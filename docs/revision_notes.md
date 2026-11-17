@@ -44,12 +44,22 @@ Presentation checks cover the transcribed numerical arrays and their totals, acq
 - Preserved station 42056's original selection label and all numerical results; added the NDBC Yucatan Basin metadata and the unresolved product-footprint mapping issue in the supplement and limitations.
 - No original scientific experiment, acquisition, or replay was rerun. See `submission_audit_2026-11-17.md` for the remaining evidence and author-metadata requirements.
 
-## Current figure and disclosure revision
+## Geographic-context and disclosure revision
 
 - Added a 12-station geographic context map with a northeastern inset and an explicit note on station 42056. The basemap is Natural Earth 1:50m land, version 4.0.0, with an immutable source record and a bundled offline subset.
 - Replaced the cumulative-only cost plot with a two-panel plot showing cumulative capacity and descriptive opportunities per decimal GB for the four alternate rounds: 18.02, 15.10, 18.63, and 8.09. These are calculations from existing source counts and bytes, not new experiments.
-- Moved the detailed processing-stratum display to Supplementary Figure S1. Main Figures 1–5 and Figure S1 are mapped to filenames in `figure_guide.md`.
+- Moved the detailed processing-stratum display to Supplementary Figure S1. That revision used Main Figures 1–5 and Figure S1; the current numbering, including the later Figure 6, is listed in `figure_guide.md`.
 - Reduced the introduction, discussion, limitations, and conclusion by about 500 words, clarified the integration-level contribution, and explained why the total and per-cell gate conditions are distinct.
 - Replaced the abstract's stronger “inspectable procedure” wording with “documents a readiness rule” to match the available evidence.
 - Restored the acknowledgment to identify specific AI-assisted preparation tasks, without asserting that the original study or its reported observations were AI-generated.
 - Retained the original scientific counts, station assignments, capacity failure, and replay-integrity result. Independent scientific reproduction and author approval remain outstanding.
+
+
+## Current typography, concise-text, and capacity-shortfall revision
+
+- Replaced repeated long code labels in narrow main-text columns with their natural-language meanings. Supplementary Table S3 preserves exact processing/listing identifiers and the CSV alias. The original research-package and replay identifiers remain in the supplement.
+- Enabled breakable URLs and left-aligned the narrow decision-name table column. Balanced the final bibliography columns. Body type remains 10-point in the IEEE journal layout.
+- Added main Figure 6: eight station-level sums of positive cell deficits and a waterfall of the allocation-dependent gap. The reported 150 opportunities plus 171 correctly allocated cell-gap additions would total 321, with 79 further needed to reach 400. This is arithmetic on the original matrix, not an acquisition forecast or new experiment.
+- Removed about 530 words from the introduction, related work, discussion, and limitations, plus redundant numerical lists and technical identifiers elsewhere. Retained study-specific coastal ASCAT context and the relevant 2024 Workflow Run RO-Crate / 2025 STAC developments, without adding unsupported novelty claims.
+- Extended the scoped AI-assistance acknowledgment to identify both derived figure groups. The original scientific record and all seven displayed vector figures remain traceable to their sources and stated calculations.
+- Final pagination is ten main pages, including the acknowledgment and references, plus five supplementary pages. The build check now enforces the author's requested ten-page main-manuscript limit.
